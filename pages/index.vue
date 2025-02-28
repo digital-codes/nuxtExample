@@ -4,6 +4,39 @@
     <ContentRenderer v-if="doc" :value="doc" />
     <p v-else>Content not found.</p>
   </div>
+
+  <VaCard>
+    <VaImage
+      src="/images/x.webp"
+      class="cardImg"
+    />
+    <VaCardTitle>Title</VaCardTitle>
+    <VaCardContent>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </VaCardContent>
+  </VaCard>
+
+
+  <p>
+    Material Design Icons<br>
+    <VaIcon class="material-icons">
+      calendar_today
+    </VaIcon>
+    <VaIcon name="book" color="#000" size="xl"/>
+  </p>
+
+  <p>
+    Font Awesome 5<br>
+    <VaIcon name="fab-github" size="64px" color="#ffffff"/>
+    <VaIcon name="fab-linkedin" size="xl" color="#00ff00"/>
+  </p>
+
+  
+
+  <VaDatePicker v-model="dateValue" color="#fff"/>
+
+
+
 </template>
 
 <script setup>
@@ -12,6 +45,9 @@ definePageMeta({
   layout: "custom", // Matches "layouts/custom.vue"
 });
 */
+
+const dateValue = ref(new Date());
+
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 

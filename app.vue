@@ -4,7 +4,9 @@
   <NuxtLayout>
     <NuxtPage/>    
   </NuxtLayout>
+
 </template>
 <script setup>
 const { isMobile } = useDevice()
+
 </script>

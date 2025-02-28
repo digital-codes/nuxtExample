@@ -2,17 +2,24 @@
 @use 'sass:color';
 // Example usage of a color variable
 
-@import "@fontsource/open-sans/latin-ext.css";
-@import "@fontsource/open-sans/latin-ext-italic.css";
+//@import "@fontsource/open-sans/latin-ext.css";
+//@import "@fontsource/open-sans/latin-ext-italic.css";
+
+@import "@fontsource/roboto/latin-ext.css";
+@import "@fontsource/roboto/latin-ext-italic.css";
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "material-design-icons-iconfont/dist/material-design-icons.min.css";
 
 body {
-    font-family: "Open Sans";
+    font-family: "Roboto",sans-serif;
+    --va-font-family: "Roboto",sans-serif;
 }
 
 
 :root {
     color: light-color("white");
     background-color: color.adjust(light-color("black"), $lightness: +30%);
+    --va-font-family: "Roboto",sans-serif;
 }
 
 .dark {
@@ -35,6 +42,13 @@ body {
     display:block;
 }
 
+// cards
+.cardImg {
+    width: 32px; 
+    height:auto;
+    margin: .5rem;
+    padding:.1rem;
+}
 
 .PIC1>img {
     width: 50vw;

@@ -1,4 +1,34 @@
 <template>
+
+<template>
+  <div class="h-52">
+    <VaSidebar
+      :minimized="minimized"
+      minimized-width="64px"
+    >
+      <template
+        v-for="item in items"
+        :key="item.title"
+      >
+        <VaSidebarItem :active="item.active">
+          <VaSidebarItemContent>
+            <VaIcon :name="item.icon" />
+            <VaSidebarItemTitle>
+              {{ item.title }}
+            </VaSidebarItemTitle>
+          </VaSidebarItemContent>
+        </VaSidebarItem>
+      </template>
+    </VaSidebar>
+  </div>
+
+  <VaCheckbox
+    v-model="minimized"
+    class="mt-2"
+    label="Minimized"
+  />
+</template>
+
     <div class="layout" :class="{ dark: isDark }">
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-light dark:bg-dark">
@@ -42,6 +72,13 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
 
+const items = ref([
+    { title: "Home", icon: "home", active: true },
+    { title: "Projects", icon: "projects" },
+    { title: "Contact", icon: "contact" },
+]);
+
+const minimized = ref(false);
 
 const isDark = ref(false);
 

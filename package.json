@@ -11,6 +11,12 @@
   },
   "dependencies": {
     "@fontsource/open-sans": "^5.1.1",
+    "@fontsource/roboto": "^5.1.1",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@fortawesome/fontawesome-svg-core": "^6.7.2",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
+    "@fortawesome/free-regular-svg-icons": "^6.7.2",
+    "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@nuxt/content": "^3.2.2",
     "@nuxt/image": "^1.9.0",
     "@nuxtjs/color-mode": "^3.5.2",
@@ -20,7 +26,9 @@
     "@nuxtjs/robots": "^5.2.4",
     "@nuxtjs/seo": "^2.2.0",
     "@pinia/nuxt": "^0.10.1",
+    "@vuestic/nuxt": "^1.0.21",
     "echarts": "^5.6.0",
+    "material-icons": "^1.13.14",
     "nuxt": "^3.15.4",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-echarts": "^0.2.6",
@@ -30,6 +38,7 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "material-design-icons-iconfont": "^6.7.0",
     "sass-embedded": "^1.85.1"
   }
 }

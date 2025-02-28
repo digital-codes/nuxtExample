@@ -12,8 +12,17 @@ export default defineNuxtConfig({
     'nuxt-echarts',
     'nuxt-easy-lightbox',
     '@nuxtjs/mdc',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    "@vuestic/nuxt"
   ],
+  vuestic: {
+    config: {
+      // Config here
+    },
+    css: ["typography", "grid", "reset"],
+    fonts: false,
+    themeCookieKey: 'vuestic-theme'
+  },
   css: ['~/assets/scss/main.scss'],
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode

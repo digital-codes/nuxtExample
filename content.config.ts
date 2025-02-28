@@ -7,19 +7,7 @@ export default defineContentConfig({
       source: 'docs/**/*.md',
       schema: z.object({
         date: z.string(),
-        lab: z.string(),
         imgname: z.string(),
-        status: z.string(),
-        excerpt: z.object({
-          type: z.string(),
-          children: z.any(),
-        }),
-        links: z.array(z.object({
-          url: z.string(),
-          name: z.string(),
-        })),
-        collaborators: z.array(z.string()),
-        tags: z.array(z.string()),
       }),
     }),
     "projects": defineCollection({
