@@ -2,16 +2,10 @@
     "welcome": "Welcome",
     "description": "This is a multilingual Nuxt 3 website.",
     "home": "Home",
-    "project list": "Project List",
+    "projectList": "Project List",
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language",
-    "error": {
-    "404": {
-      "title": "Page Not Found",
-      "message": "The page you are looking for doesn't exist.",
-      "home": "Go to Home"
-    }
-    }
+      "Page not found": "Page not Found"
   }
   

@@ -2,16 +2,10 @@
     "welcome": "Willkommen",
     "description": "Dies ist eine mehrsprachige Nuxt 3-Website.",
     "home": "Startseite",
-    "project list": "Projektliste",
+    "projectList": "Projektliste",
     "projects": "Projekte",
     "contact": "Kontakt",
     "language": "Sprache",
-    "error": {
-      "404": {
-        "title": "Seite nicht gefunden",
-        "message": "Die gesuchte Seite existiert nicht.",
-        "home": "Zur Startseite"
-      }
-    }
-  }
+    "Page not found": "Seite nicht gefunden"
+}
   

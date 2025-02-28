@@ -65,7 +65,7 @@ watch(locale, async (newLocale, oldLocale) => {
         currentRoute = currentRoute.replace(`/${oldLocale}`, '');
     }
     console.log("Current route:", currentRoute, newLocale);
-    const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute;
+    const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute == "" ? "/" : currentRoute;
     console.log("New path:", newPath);
     router.push(newPath);
 });
