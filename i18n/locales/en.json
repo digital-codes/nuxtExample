@@ -2,6 +2,7 @@
     "welcome": "Welcome",
     "description": "This is a multilingual Nuxt 3 website.",
     "home": "Home",
+    "project list": "Project List",
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language",

@@ -6,12 +6,9 @@
                 <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}`" class="mx-2">
                     {{ $t("home") }}
                 </NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects/projects1`" class="mx-2">
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projectList`" class="mx-2">
                     {{
-                        $t("project1") }}</NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects/projects2`" class="mx-2">
-                    {{
-                        $t("project2") }}</NuxtLink>
+                        $t("projectList") }}</NuxtLink>
                 <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}contact`" class="mx-2">
                     {{
                         $t("contact") }}</NuxtLink>
@@ -67,7 +64,10 @@ watch(locale, async (newLocale, oldLocale) => {
     if (oldLocale !== 'de' && currentRoute.startsWith(`/${oldLocale}`)) {
         currentRoute = currentRoute.replace(`/${oldLocale}`, '');
     }
-    router.push(newLocale !== 'de' ? `${newLocale}${currentRoute}` : currentRoute);
+    console.log("Current route:", currentRoute, newLocale);
+    const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute;
+    console.log("New path:", newPath);
+    router.push(newPath);
 });
 
 const toggleDarkMode = () => {
