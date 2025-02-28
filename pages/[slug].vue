@@ -12,12 +12,7 @@ import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();
 const route = useRoute();
-/*  
-// ✅ Load any page dynamically
-const { data: doc } = await useAsyncData(() =>
-queryContent(`/docs/${locale.value}/${slug}`).findOne()
-);
-*/
+
 
 console.log("Slug:", route.params.slug);
 

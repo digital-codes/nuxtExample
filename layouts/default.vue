@@ -3,12 +3,15 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-light dark:bg-dark">
             <nav>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}`" class="mx-2">{{ $t("home") }}
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}`" class="mx-2">
+                    {{ $t("home") }}
                 </NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects`" class="mx-2">{{
-                    $t("projects") }}</NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}contact`" class="mx-2">{{
-                    $t("contact") }}</NuxtLink>
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects`" class="mx-2">
+                    {{
+                        $t("projects") }}</NuxtLink>
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}contact`" class="mx-2">
+                    {{
+                        $t("contact") }}</NuxtLink>
             </nav>
 
             <!-- Language Switcher -->
@@ -43,6 +46,8 @@ import { ref, onMounted, watch } from "vue";
 const isDark = ref(false);
 
 const router = useRouter();
+const route = useRoute();
+
 const { locale, loadLocaleMessages } = useI18n();
 
 const colorMode = useColorMode()
@@ -74,7 +79,7 @@ const toggleDarkMode = () => {
     console.log("Dark mode is now", colorMode.preference == "dark" ? "enabled" : "disabled");
 };
 const setMode = (mode) => {
-    console.log("Setting mode:",mode)
+    console.log("Setting mode:", mode)
     if (mode === 'light') {
         colorMode.preference = 'light'
         document.documentElement.setAttribute("data-theme", "light");
@@ -86,6 +91,18 @@ const setMode = (mode) => {
     }
     console.log("Dark mode is now", mode == "dark" ? "enabled" : "disabled");
 };
+
+// Enable reload ONLY in SSG (static mode)
+if (!import.meta.dev && !import.meta.server) {
+    watch(
+        () => route.fullPath,
+        (newPath, oldPath) => {
+            if (import.meta.client && newPath !== oldPath) {
+                window.location.reload(); // Only reload when navigating in SSG mode
+            }
+        }
+    );
+}
 
 
 onMounted(() => {
