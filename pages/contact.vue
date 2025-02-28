@@ -1,36 +1,32 @@
 <template>
-    <div>
-        <h1 v-if="doc">{{ doc.title }}</h1>
-        <ContentRenderer v-if="doc" :value="doc" />
-        <p v-else>Page not found.</p>
-    </div>
+  <div>
+    <h1 v-if="doc">{{ doc.title }}</h1>
+    <ContentRenderer v-if="doc" :value="doc" />
+    <p v-else>Content not found.</p>
+  </div>
 </template>
 
 <script setup>
+definePageMeta({
+  layout: "custom", // Matches "layouts/custom.vue"
+});
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();
 const route = useRoute();
 
-
-console.log("Slug:", route.params.slug);
-
 // ✅ Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
 console.log("Current route:", route.path);
-const slug = route.params.slug;
-console.log("Current slug:", slug);
 let langPath = locale.value == "de" ? "/de" : ""
-//const contentPath = `/docs${langPath}${route.path}`;
 const contentPath = `/docs${langPath}${route.path}`;
 const { data: doc, error } = await useAsyncData(async () => await queryCollection("docs").path(contentPath).first());
 
 // ✅ Log fetched content or errors
 if (doc.value == null) {
-    console.error("SSR Content Load Error:", error.value);
+  console.error("SSR Content Load Error:", error.value);
 }
-
 
 
 </script>

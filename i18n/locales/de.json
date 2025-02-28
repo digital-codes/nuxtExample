@@ -4,6 +4,13 @@
     "home": "Startseite",
     "projects": "Projekte",
     "contact": "Kontakt",
-    "language": "Sprache"
+    "language": "Sprache",
+    "error": {
+      "404": {
+        "title": "Seite nicht gefunden",
+        "message": "Die gesuchte Seite existiert nicht.",
+        "home": "Zur Startseite"
+      }
+    }
   }
   

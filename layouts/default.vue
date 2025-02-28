@@ -6,9 +6,12 @@
                 <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}`" class="mx-2">
                     {{ $t("home") }}
                 </NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects`" class="mx-2">
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects/projects1`" class="mx-2">
                     {{
-                        $t("projects") }}</NuxtLink>
+                        $t("project1") }}</NuxtLink>
+                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projects/projects2`" class="mx-2">
+                    {{
+                        $t("project2") }}</NuxtLink>
                 <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}contact`" class="mx-2">
                     {{
                         $t("contact") }}</NuxtLink>

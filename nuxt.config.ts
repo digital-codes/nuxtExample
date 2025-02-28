@@ -15,6 +15,9 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode'
   ],
   css: ['~/assets/scss/main.scss'],
+  generate: {
+    fallback: "404.html", // Ensures correct 404 handling in SSG mode
+  },
   colorMode: {
     preference: 'light', // default value of $colorMode.preference
     fallback: 'light', // fallback value if not system preference found
