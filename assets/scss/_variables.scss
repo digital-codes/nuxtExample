@@ -45,7 +45,10 @@ $lightColors: (
     "dark-grey": #344258,
     "border-grey": #ccc,
     "section-grey": #fbfbfb,
-    "black" : #000000
+    "black" : #000000,
+    "primary": #ff6460,
+    "secondary": #01aefd,
+    "accent": #01a8a8
 );
 
 // ✅ Define dark mode colors (second value of each pair)
@@ -54,7 +57,7 @@ $darkColors: (
     "smoke-white": #1a1a1a,
     "grey-white": #252525,
 
-    "cfg-blue-1": #007acc,
+    "cfg-blue-1": #0070aa,
     "cfg-blue-2": #005f99,
     "cfg-blue-3": #004080,
 
@@ -87,7 +90,10 @@ $darkColors: (
     "dark-grey": #1e2a38,
     "border-grey": #444,
     "section-grey": #1a1a1a,
-    "black" : #ffffff
+    "black" : #ffffff,
+    "primary": #005f99,
+    "secondary": #cc3333,
+    "accent": #007070
 );
 
 @function light-color($name) {
@@ -132,6 +138,7 @@ $derivedColorsDark: (
     }
 }
 
+/*
 $primary: light-dark(light-color("cfg-red-2"), dark-color("cfg-red-2"));
 $secondary: light-dark(light-color("cfg-blue-1"), dark-color("cfg-blue-1"));
 $accent: light-dark(light-color("cfg-cyan-1"), dark-color("cfg-cyan-1"));   
@@ -168,3 +175,5 @@ $dark-grey: light-dark(light-color("dark-grey"), dark-color("dark-grey"));
 $border-grey: light-dark(light-color("border-grey"), dark-color("border-grey"));
 $section-grey: light-dark(light-color("section-grey"), dark-color("section-grey"));
 $black: light-dark(light-color("black"), dark-color("black"));
+*/
+
