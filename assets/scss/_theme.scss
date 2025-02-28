@@ -20,6 +20,22 @@ body {
     background-color: color.adjust(dark-color("black"), $lightness: -30%);
 }
 
+// project specific styles
+.projectIcon {
+    width: 32px; 
+    background: none; 
+    position: relative; 
+    bottom: -.5rem;  
+    box-shadow: none; 
+    border: none;
+    margin: 0;
+    margin-right: 10px;
+}
+.projectChecks {
+    display:block;
+}
+
+
 .PIC1>img {
     width: 50vw;
     height: auto;

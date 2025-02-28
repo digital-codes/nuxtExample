@@ -10,6 +10,10 @@ export default defineContentConfig({
         lab: z.string(),
         imgname: z.string(),
         status: z.string(),
+        excerpt: z.object({
+          type: z.string(),
+          children: z.any(),
+        }),
         links: z.array(z.object({
           url: z.string(),
           name: z.string(),
