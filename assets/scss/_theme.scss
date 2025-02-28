@@ -2,6 +2,14 @@
 @use 'sass:color';
 // Example usage of a color variable
 
+@import "@fontsource/open-sans/latin-ext.css";
+@import "@fontsource/open-sans/latin-ext-italic.css";
+
+body {
+    font-family: "Open Sans";
+}
+
+
 :root {
     color: light-color("white");
     background-color: color.adjust(light-color("black"), $lightness: +30%);

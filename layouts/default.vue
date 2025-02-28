@@ -19,7 +19,7 @@
 
             <!-- Dark Mode Toggle -->
             <button @click="toggleDarkMode" class="ml-4">
-                {{ isDark ? "🌙 Dark Mode" : "☀️ Light Mode" }}
+                {{ !isDark ? "🌙 Dark Mode" : "☀️ Light Mode" }}
             </button>
         </header>
 
@@ -31,6 +31,7 @@
         <!-- Footer -->
         <footer class="p-4 text-center">
             &copy; {{ new Date().getFullYear() }} My Website
+            <img src="~/assets/img/okl.svg" alt="Logo" class="h-6 inline-block  footer-logo" />
         </footer>
     </div>
 </template>
@@ -44,6 +45,8 @@ const isDark = ref(false);
 const router = useRouter();
 const { locale, loadLocaleMessages } = useI18n();
 
+const colorMode = useColorMode()
+console.log(colorMode.preference)
 
 watch(locale, async (newLocale, oldLocale) => {
     // when locale changes, load new locale messages here
@@ -60,21 +63,35 @@ watch(locale, async (newLocale, oldLocale) => {
 });
 
 const toggleDarkMode = () => {
-    isDark.value = !isDark.value;
-    localStorage.setItem("theme", isDark.value ? "dark" : "light");
-    document.documentElement.setAttribute("data-theme", isDark.value ? "dark" : "light");
-
-    // ✅ Add/remove "dark" class to <html>
-    document.body.classList.toggle("dark", isDark.value);
-
-    console.log("Dark mode is now", isDark.value ? "enabled" : "disabled");
+    console.log(colorMode.preference)
+    if (colorMode.preference === 'dark') {
+        setMode("light");
+        isDark.value = false;
+    } else {
+        setMode("dark");
+        isDark.value = true;
+    }
+    console.log("Dark mode is now", colorMode.preference == "dark" ? "enabled" : "disabled");
 };
+const setMode = (mode) => {
+    console.log("Setting mode:",mode)
+    if (mode === 'light') {
+        colorMode.preference = 'light'
+        document.documentElement.setAttribute("data-theme", "light");
+        document.body.classList.toggle("dark", false);
+    } else {
+        colorMode.preference = 'dark'
+        document.documentElement.setAttribute("data-theme", "dark");
+        document.body.classList.toggle("dark", true);
+    }
+    console.log("Dark mode is now", mode == "dark" ? "enabled" : "disabled");
+};
+
 
 onMounted(() => {
     const savedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    isDark.value = savedTheme === "dark";
-    document.documentElement.setAttribute("data-theme", savedTheme);
-    document.body.classList.toggle("dark", isDark.value);
+    const colorMode = useColorMode()
+    setMode(colorMode.preference)
 });
 </script>
 

@@ -4,12 +4,14 @@ Fresh Footer
 @use "../variables" as *;
 
 
-footer.footer-dark {
+footer {
     background: $blue-grey;
     color: $white;
+
     .columns {
         margin-top: 35px;
     }
+
     .footer-logo {
         img {
             // modified for OKF logo
@@ -17,32 +19,90 @@ footer.footer-dark {
             background-color: $white;
         }
     }
+
     .footer-column {
         .footer-header h3 {
-            font-weight:500;
+            font-weight: 500;
             font-size: 1.2rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 20px;
         }
+
         ul.link-list {
             line-height: 40px;
             font-size: 1.1rem;
+
             a {
                 color: $light-blue-grey;
                 font-weight: 400;
                 transition: all 0.5s;
             }
+
             :hover {
                 color: $smoke-white;
             }
         }
+
         .level-item .icon {
             font-size: 150%;
             color: $secondary;
             transition: all 0.5s;
+
             :hover {
                 color: $smoke-white;
+            }
+        }
+    }
+
+    html.dark-mode & {
+        background: $blue-grey;
+        color: $black;
+
+        .columns {
+            margin-top: 35px;
+        }
+
+        .footer-logo {
+            img {
+                // modified for OKF logo
+                height: 40px;
+                background-color: $white;
+            }
+        }
+
+        .footer-column {
+            .footer-header h3 {
+                font-weight: 500;
+                font-size: 1.2rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin-bottom: 20px;
+            }
+
+            ul.link-list {
+                line-height: 40px;
+                font-size: 1.1rem;
+
+                a {
+                    color: $light-blue-grey;
+                    font-weight: 400;
+                    transition: all 0.5s;
+                }
+
+                :hover {
+                    color: $smoke-white;
+                }
+            }
+
+            .level-item .icon {
+                font-size: 150%;
+                color: $secondary;
+                transition: all 0.5s;
+
+                :hover {
+                    color: $smoke-white;
+                }
             }
         }
     }
