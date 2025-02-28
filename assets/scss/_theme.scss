@@ -1,0 +1,72 @@
+@use "_variables" as *; // Import variables
+@use 'sass:color';
+// Example usage of a color variable
+
+:root {
+    color: light-color("white");
+    background-color: color.adjust(light-color("black"), $lightness: +30%);
+}
+
+.dark {
+    color: dark-color("white");
+    background-color: color.adjust(dark-color("black"), $lightness: -30%);
+}
+
+.PIC1>img {
+    width: 50vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 40vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 30vw;
+    }
+}
+
+.PIC2>img {
+    width: 60vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 40vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 20vw;
+    }
+}
+
+.IMG1 {
+    width: 25vw;
+    height: auto;
+    max-height: fit-content;
+    border: solid 1px var(--border-grey);
+    border-radius: 5px;
+    padding: 5px;
+
+    @media (max-width: 768px) {
+        width: 20vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 15vw;
+    }
+}
+
+.IMG2 {
+    width: 20vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 15vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 10vw;
+    }
+}

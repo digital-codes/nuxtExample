@@ -1,0 +1,9 @@
+{
+    "welcome": "Welcome",
+    "description": "This is a multilingual Nuxt 3 website.",
+    "home": "Home",
+    "projects": "Projects",
+    "contact": "Contact",
+    "language": "Language"
+  }
+  

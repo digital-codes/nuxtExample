@@ -1,0 +1,169 @@
+/* ==========================================================================
+Color variables
+========================================================================== */
+
+@use "sass:map"; // Import map utilities
+@use "sass:meta"; // Required for string conversion
+@use "sass:color"; // Required for color functions
+
+// ✅ Define light mode colors (first value of each pair)
+$lightColors: (
+    "white": #ffffff,
+    "smoke-white": #fcfcfc,
+    "grey-white": #f2f2f2,
+
+    "cfg-blue-1": #01aefd,
+    "cfg-blue-2": #01aefd,
+    "cfg-blue-3": #01aefd,
+
+    "cfg-red-1": #dc3836,
+    "cfg-red-2": #ff6460,
+    "cfg-red-3": #ff8383,
+
+    "cfg-green-1": #01b255,
+    "cfg-green-2": #16de9b,
+    "cfg-green-3": #55dba6,
+
+    "cfg-cyan-1": #01a8a8,
+    "cfg-cyan-2": #29cec8,
+    "cfg-cyan-3": #6cdcd5,
+
+    "fade-grey": #ededed,
+    "light-grey": #EFF4F7,
+    "title-grey": #A9ABAC,
+    "blue-grey": #444F60,
+    "muted-grey": #999,
+    "light-blue-grey": #98a9c3,
+    "medium-grey": #66676b,
+    "basaltic-grey": #878787,
+    "purple": #7F00FF,
+    "mint": #11FFBD,
+    "bloody": #FC354C,
+    "pinky": #ff00cc,
+    "frost": #004e92,
+    "placeholder": #cecece,
+    "dark-grey": #344258,
+    "border-grey": #ccc,
+    "section-grey": #fbfbfb,
+    "black" : #000000
+);
+
+// ✅ Define dark mode colors (second value of each pair)
+$darkColors: (
+    "white": #121212,
+    "smoke-white": #1a1a1a,
+    "grey-white": #252525,
+
+    "cfg-blue-1": #007acc,
+    "cfg-blue-2": #005f99,
+    "cfg-blue-3": #004080,
+
+    "cfg-red-1": #992020,
+    "cfg-red-2": #cc3333,
+    "cfg-red-3": #b33c3c,
+
+    "cfg-green-1": #00803c,
+    "cfg-green-2": #12a672,
+    "cfg-green-3": #42a580,
+
+    "cfg-cyan-1": #007070,
+    "cfg-cyan-2": #1f9b94,
+    "cfg-cyan-3": #4ea09c,
+
+    "fade-grey": #2a2a2a,
+    "light-grey": #1f252a,
+    "title-grey": #737373,
+    "blue-grey": #98a9c3,
+    "muted-grey": #666,
+    "light-blue-grey": #5b6b85,
+    "medium-grey": #3b3c3f,
+    "basaltic-grey": #575757,
+    "purple": #5b00b3,
+    "mint": #0db38c,
+    "bloody": #b32530,
+    "pinky": #b30099,
+    "frost": #002b59,
+    "placeholder": #555,
+    "dark-grey": #1e2a38,
+    "border-grey": #444,
+    "section-grey": #1a1a1a,
+    "black" : #ffffff
+);
+
+@function light-color($name) {
+    @return map.get($lightColors, $name);
+}
+
+@function dark-color($name) {
+    @return map.get($darkColors, $name);
+}
+ 
+
+$derivedColorsLight: (
+    "primary": light-color("cfg-red-2"),
+    "secondary": light-color("cfg-blue-1"),
+    "accent": light-color("cfg-cyan-1")
+);
+
+$derivedColorsDark: (
+    "primary": dark-color("cfg-red-2"),
+    "secondary": dark-color("cfg-blue-1"),
+    "accent": dark-color("cfg-cyan-1")
+);
+
+
+// ✅ Set default light mode variables in `:root`
+:root {
+    @each $name, $color in $lightColors {
+        --#{$name}: #{$color};
+    }
+    @each $name, $color in $derivedColorsLight {
+        --#{$name}: #{$color};
+    }
+}
+
+/* ✅ Override Variables in Dark Mode */
+.dark {
+    @each $name, $color in $darkColors {
+        --#{$name}: #{$color};
+    }
+    @each $name, $color in $derivedColorsDark {
+        --#{$name}: #{$color};
+    }
+}
+
+$primary: light-dark(light-color("cfg-red-2"), dark-color("cfg-red-2"));
+$secondary: light-dark(light-color("cfg-blue-1"), dark-color("cfg-blue-1"));
+$accent: light-dark(light-color("cfg-cyan-1"), dark-color("cfg-cyan-1"));   
+$white: light-dark(light-color("white"), dark-color("white"));
+$smoke-white: light-dark(light-color("smoke-white"), dark-color("smoke-white"));
+$grey-white: light-dark(light-color("grey-white"), dark-color("grey-white"));
+$cfg-blue-1: light-dark(light-color("cfg-blue-1"), dark-color("cfg-blue-1"));
+$cfg-blue-2: light-dark(light-color("cfg-blue-2"), dark-color("cfg-blue-2"));
+$cfg-blue-3: light-dark(light-color("cfg-blue-3"), dark-color("cfg-blue-3"));
+$cfg-red-1: light-dark(light-color("cfg-red-1"), dark-color("cfg-red-1"));
+$cfg-red-2: light-dark(light-color("cfg-red-2"), dark-color("cfg-red-2"));
+$cfg-red-3: light-dark(light-color("cfg-red-3"), dark-color("cfg-red-3"));
+$cfg-green-1: light-dark(light-color("cfg-green-1"), dark-color("cfg-green-1"));
+$cfg-green-2: light-dark(light-color("cfg-green-2"), dark-color("cfg-green-2"));
+$cfg-green-3: light-dark(light-color("cfg-green-3"), dark-color("cfg-green-3"));
+$cfg-cyan-1: light-dark(light-color("cfg-cyan-1"), dark-color("cfg-cyan-1"));
+$cfg-cyan-2: light-dark(light-color("cfg-cyan-2"), dark-color("cfg-cyan-2"));
+$cfg-cyan-3: light-dark(light-color("cfg-cyan-3"), dark-color("cfg-cyan-3"));
+$fade-grey: light-dark(light-color("fade-grey"), dark-color("fade-grey"));
+$light-grey: light-dark(light-color("light-grey"), dark-color("light-grey"));
+$title-grey: light-dark(light-color("title-grey"), dark-color("title-grey"));
+$blue-grey: light-dark(light-color("blue-grey"), dark-color("blue-grey"));
+$muted-grey: light-dark(light-color("muted-grey"), dark-color("muted-grey"));
+$light-blue-grey: light-dark(light-color("light-blue-grey"), dark-color("light-blue-grey"));
+$medium-grey: light-dark(light-color("medium-grey"), dark-color("medium-grey"));
+$basaltic-grey: light-dark(light-color("basaltic-grey"), dark-color("basaltic-grey"));
+$purple: light-dark(light-color("purple"), dark-color("purple"));
+$mint: light-dark(light-color("mint"), dark-color("mint"));
+$bloody: light-dark(light-color("bloody"), dark-color("bloody"));
+$pinky: light-dark(light-color("pinky"), dark-color("pinky"));
+$frost: light-dark(light-color("frost"), dark-color("frost"));
+$placeholder: light-dark(light-color("placeholder"), dark-color("placeholder"));
+$dark-grey: light-dark(light-color("dark-grey"), dark-color("dark-grey"));
+$border-grey: light-dark(light-color("border-grey"), dark-color("border-grey"));
+$section-grey: light-dark(light-color("section-grey"), dark-color("section-grey"));

@@ -1,0 +1,164 @@
+/* ==========================================================================
+Color variables
+========================================================================== */
+
+@use "sass:map"; // Import map utilities
+@use "sass:meta"; // Required for string conversion
+@use "sass:color"; // Required for color functions
+
+// Define colors in an SCSS map
+$baseColors: (
+    "white": (#ffffff, #121212),
+    "smoke-white": (#fcfcfc, #1a1a1a),
+    "grey-white": (#f2f2f2, #252525),
+
+    "cfg-blue-1": (#01aefd, #007acc),
+    "cfg-blue-2": (#01aefd, #005f99),
+    "cfg-blue-3": (#01aefd, #004080),
+
+    "cfg-red-1": (#dc3836, #992020),
+    "cfg-red-2": (#ff6460, #cc3333),
+    "cfg-red-3": (#ff8383, #b33c3c),
+
+    "cfg-green-1": (#01b255, #00803c),
+    "cfg-green-2": (#16de9b, #12a672),
+    "cfg-green-3": (#55dba6, #42a580),
+
+    "cfg-cyan-1": (#01a8a8, #007070),
+    "cfg-cyan-2": (#29cec8, #1f9b94),
+    "cfg-cyan-3": (#6cdcd5, #4ea09c),
+    "fade-grey": (#ededed, #2a2a2a),
+    "light-grey": (#EFF4F7, #1f252a),
+    "title-grey": (#A9ABAC, #737373),
+    "blue-grey": (#444F60, #98a9c3),
+    "muted-grey": (#999, #666),
+    "light-blue-grey": (#98a9c3, #5b6b85),
+    "medium-grey": (#66676b, #3b3c3f),
+    "basaltic-grey": (#878787, #575757),
+    "purple": (#7F00FF, #5b00b3),
+    "mint": (#11FFBD, #0db38c),
+    "bloody": (#FC354C, #b32530),
+    "pinky": (#ff00cc, #b30099),
+    "frost": (#004e92, #002b59),
+    "placeholder": (#cecece, #555),
+    "dark-grey": (#344258, #1e2a38),
+    "border-grey": (#ccc, #444),
+    "section-grey": (#fbfbfb, #1a1a1a)
+    /*    
+    "white": #fff,
+    "smoke-white": #fcfcfc,
+    "grey-white": #f2f2f2,
+
+    "cfg-blue-1": #01aefd,
+    "cfg-blue-2": #01aefd,
+    "cfg-blue-3": #01aefd,
+
+    "cfg-red-1": #dc3836,
+    "cfg-red-2": #ff6460,
+    "cfg-red-3": #ff8383,
+
+    "cfg-green-1": #01b255,
+    "cfg-green-2": #16de9b,
+    "cfg-green-3": #55dba6,
+
+    "cfg-cyan-1": #01a8a8,
+    "cfg-cyan-2": #29cec8,
+    "cfg-cyan-3": #6cdcd5,
+    "fade-grey": #ededed,
+    "light-grey": #EFF4F7,
+    "title-grey": #A9ABAC,
+    "blue-grey": #444F60,
+    "muted-grey": #999,
+    "light-blue-grey": #98a9c3,
+    "medium-grey": #66676b,
+    "basaltic-grey": #878787,
+    "purple": #7F00FF,
+    "mint": #11FFBD,
+    "bloody": #FC354C,
+    "pinky": #ff00cc,
+    "frost": #004e92,
+    "placeholder": #cecece,
+    "dark-grey": #344258,
+    "border-grey": #ccc,
+    "section-grey": #fbfbfb
+    */
+);
+
+$derivedColors: (
+    "primary": map.get($baseColors, "cfg-red-2"),
+    "secondary": map.get($baseColors, "cfg-blue-1"),
+    "accent": map.get($baseColors, "cfg-cyan-1"),
+);
+
+// ✅ Function to extract the **light mode** color from `light-dark()`
+@function light-color($name) {
+    @return nth(map.get($baseColors, $name), 1);
+}
+
+// ✅ Function to extract the **dark mode** color from `light-dark()`
+@function dark-color($name) {
+    @return nth(map.get($baseColors, $name), 2);
+}
+
+
+// Automatically generate CSS variables from the SCSS map
+:root {
+    @each $name, $color in $baseColors {
+        --#{$name}: #{light-color($color)}; // Use light value by default
+    }
+
+}
+
+// Automatically generate CSS variables from the SCSS map
+.dark {
+    @each $name, $color in $baseColors {
+        --#{$name}: #{dark-color($color)}; // Use light value by default
+
+    }
+
+}
+
+    /*
+// legacy scss varaibles
+$white: color("white");
+$smoke-white: color("smoke-white");
+$grey-white: color("grey-white");
+
+$cfg-blue-1: color("cfg-blue-1");
+$cfg-blue-2: color("cfg-blue-2");
+$cfg-blue-3: color("cfg-blue-3");
+
+$cfg-red-1: color("cfg-red-1");
+$cfg-red-2: color("cfg-red-2");
+$cfg-red-3: color("cfg-red-3");
+
+$cfg-green-1: color("cfg-green-1");
+$cfg-green-2: color("cfg-green-2");
+$cfg-green-3: color("cfg-green-3");
+
+$cfg-cyan-1: color("cfg-cyan-1");
+$cfg-cyan-2: color("cfg-cyan-2");
+$cfg-cyan-3: color("cfg-cyan-3");
+
+$fade-grey: color("fade-grey");
+$light-grey: color("light-grey");
+$title-grey: color("title-grey");
+$blue-grey: color("blue-grey");
+$muted-grey: color("muted-grey");
+$light-blue-grey: color("light-blue-grey");
+$medium-grey: color("medium-grey");
+$basaltic-grey: color("basaltic-grey");
+$purple: color("purple");
+$mint: color("mint");
+$bloody: color("bloody");
+$pinky: color("pinky");
+$frost: color("frost");
+$placeholder: color("placeholder");
+$dark-grey: color("dark-grey");
+$border-grey: color("border-grey");
+$section-grey: color("section-grey");
+
+$primary: color("cfg-red-2"); //#ff645f;
+$secondary: color("cfg-blue-1"); // #00abfa;
+$accent: color("cfg-cyan-1"); //#78ccc7;  
+*/

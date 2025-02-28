@@ -1,0 +1,26 @@
+/*
+@import 'partials/variables';
+@import 'partials/mixins';
+@import 'partials/global';
+@import 'partials/layout';
+@import 'partials/components';
+*/
+@use '_variables.scss' as *;
+@use '_theme.scss' as *;
+
+/*
+@use 'partials/_buttons.scss' as *;
+@use 'partials/_cards.scss' as *;
+@use 'partials/_content.scss' as *;
+//@use 'partials/_dropdowns.scss' as *;
+@use 'partials/_footer.scss' as *;
+@use 'partials/_forms.scss' as *;
+@use 'partials/_hero.scss' as *;
+@use 'partials/_lists.scss' as *;
+@use 'partials/_navbar.scss' as *;
+@use 'partials/_news.scss' as *;
+@use 'partials/_responsive.scss' as *;
+@use 'partials/_sections.scss' as *;
+@use 'partials/_utils.scss' as *;
+*/
+

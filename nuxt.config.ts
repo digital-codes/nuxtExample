@@ -1,0 +1,60 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  compatibilityDate: '2024-11-01',
+  devtools: { enabled: true },
+  modules: [
+    '@nuxtjs/i18n',
+    '@nuxt/image',
+    '@nuxtjs/device',
+    '@nuxtjs/seo',
+    '@nuxt/content',
+    '@pinia/nuxt',
+    'nuxt-echarts',
+    'nuxt-easy-lightbox',
+    '@nuxtjs/mdc'
+  ],
+  css: ['~/assets/scss/main.scss'],
+  i18n: {
+    strategy: 'prefix_except_default', // ✅ Uses route-based detection
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json' },
+      { code: 'de', iso: 'de-DE', file: 'de.json' }
+    ],
+    defaultLocale: 'de',
+    lazy: true,
+    detectBrowserLanguage: false, // ❌ Disable cookie-based detection
+    langDir: 'locales/'
+  },
+  content: {
+    build: {
+      markdown: {
+        mdc: true, // Enables Vue components inside markdown files
+        toc: {
+          depth: 3, // include h3 headings
+        }
+      }
+    }
+  },
+  image: {
+    inject: false,
+    // For example you might want the source images in assets/images directory 
+    // rather than the default public directory so the source images 
+    // don't get copied into dist and deployed:
+    // dir: 'public/images',
+    presets: {
+      avatar: {
+        modifiers: {
+          format: 'jpg',
+          width: 50,
+          height: 50
+        }
+      }
+    }
+  },
+  echarts: {
+    renderer: ["canvas",'svg'],
+    charts: ['BarChart', 'LineChart', 'PieChart'],
+    components: ['DatasetComponent', 'GridComponent', 'TooltipComponent'],
+    features: ['LabelLayout', 'UniversalTransition']
+  }
+});
