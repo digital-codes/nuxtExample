@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 v-if="doc">{{ doc.title }}</h1>
-        <ContentRenderer v-if="doc" :value="doc" />
+        <ContentRenderer v-if="doc" :value="doc" :key="name" />
         <p v-else>Page not found.</p>
     </div>
 </template>
@@ -13,6 +13,7 @@ import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
 const route = useRoute();
 
+const name = ref()
 
 // ✅ Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
@@ -24,16 +25,28 @@ console.log("Current slug:", slug);
 const contentPath = `/projects/${locale.value}/${slug}`
 const coll = "projects"
 //const coll = locale.value == "de" ? "projectsDe" : "projectsEn"
-console.log("Content path:", contentPath,coll);
-const { data: doc, error } = await useAsyncData(async () => await queryCollection(coll).path(contentPath).first());
+console.log("Content path:", contentPath, coll);
+// const { data: doc, error } = await useAsyncData(async () => await queryCollection(coll).path(contentPath).first());
+
+const { data: doc, error } = await useAsyncData('project', async () => {
+    try {
+        const result = await queryCollection(coll).path(contentPath).first()
+        name.value = route.path
+        return result;
+    } catch (err) {
+        console.error("Failed to fetch project data", err);
+        return null;
+    }
+});
+
 
 // ✅ Log fetched content or errors
 if (doc.value == null) {
     console.error("SSR Content Load Error:", error.value);
     throw createError({
-    statusCode: 404,
-    statusMessage: 'Page Not Found'
-  })
+        statusCode: 404,
+        statusMessage: 'Page Not Found'
+    })
 }
 
 

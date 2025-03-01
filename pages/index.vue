@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1 v-if="doc">{{ doc.title }}</h1>
-    <ContentRenderer v-if="doc" :value="doc" />
+    <ContentRenderer v-if="doc" :value="doc"/>
     <p v-else>Content not found.</p>
   </div>
 
@@ -53,6 +53,8 @@ import { useI18n } from "vue-i18n";
 
 const { locale } = useI18n();
 const route = useRoute();
+
+const name = ref(route.path)
 
 // ✅ Ensure correct file path based on locale
 console.log("Current locale:", locale.value);

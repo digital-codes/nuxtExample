@@ -1,34 +1,22 @@
 <template>
-
-<template>
-  <div class="h-52">
-    <VaSidebar
-      :minimized="minimized"
-      minimized-width="64px"
-    >
-      <template
-        v-for="item in items"
-        :key="item.title"
-      >
-        <VaSidebarItem :active="item.active">
-          <VaSidebarItemContent>
-            <VaIcon :name="item.icon" />
-            <VaSidebarItemTitle>
-              {{ item.title }}
-            </VaSidebarItemTitle>
-          </VaSidebarItemContent>
-        </VaSidebarItem>
-      </template>
-    </VaSidebar>
-  </div>
-
-  <VaCheckbox
-    v-model="minimized"
-    class="mt-2"
-    label="Minimized"
-  />
-</template>
-
+    <div>
+        <!-- do not use template wrapper from vasidebar => hydration mismatches -->
+        <div class="h-52">
+            <VaSidebar :minimized="minimized" minimized-width="64px">
+                <template v-for="item in items" :key="item.title">
+                    <VaSidebarItem :active="item.active">
+                        <VaSidebarItemContent>
+                            <VaIcon :name="item.icon" />
+                            <VaSidebarItemTitle>
+                                {{ item.title }}
+                            </VaSidebarItemTitle>
+                        </VaSidebarItemContent>
+                    </VaSidebarItem>
+                </template>
+            </VaSidebar>
+        </div>
+        <VaCheckbox v-model="minimized" class="mt-2" label="Minimized" />
+    </div>
     <div class="layout" :class="{ dark: isDark }">
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-light dark:bg-dark">
@@ -57,10 +45,9 @@
         </header>
 
         <!-- Page Content -->
-        <main class="p-6">
-            <slot />
-        </main>
-
+            <main class="p-6">
+                <slot />
+            </main>
         <!-- Footer -->
         <footer class="p-4 text-center">
             &copy; {{ new Date().getFullYear() }} My Website
@@ -72,11 +59,12 @@
 <script setup>
 import { ref, onMounted, watch } from "vue";
 
-const items = ref([
+const items = [
     { title: "Home", icon: "home", active: true },
-    { title: "Projects", icon: "projects" },
-    { title: "Contact", icon: "contact" },
-]);
+    { title: "Projects", icon: "projects", active: false },
+    { title: "Contact", icon: "contact", active: false },
+];
+const mounted = ref(false);
 
 const minimized = ref(false);
 
@@ -104,7 +92,8 @@ watch(locale, async (newLocale, oldLocale) => {
     console.log("Current route:", currentRoute, newLocale);
     const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute == "" ? "/" : currentRoute;
     console.log("New path:", newPath);
-    router.push(newPath);
+    await navigateTo({ path: newPath })
+    //router.push(newPath);
 });
 
 const toggleDarkMode = () => {
@@ -133,6 +122,7 @@ const setMode = (mode) => {
 };
 
 // Enable reload ONLY in SSG (static mode)
+/* */
 if (!import.meta.dev && !import.meta.server) {
     watch(
         () => route.fullPath,
@@ -143,12 +133,16 @@ if (!import.meta.dev && !import.meta.server) {
         }
     );
 }
+/* */
 
 
 onMounted(() => {
     const savedTheme = localStorage.getItem("theme") || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
     const colorMode = useColorMode()
+    isDark.value = savedTheme === "dark";
     setMode(colorMode.preference)
+    mounted.value = true;
+    console.log("Mounted", savedTheme);
 });
 </script>
 
