@@ -5,6 +5,16 @@
     <p v-else>Content not found.</p>
   </div>
 
+  <UCard>
+    <template v-slot:header>
+    header
+  </template>
+    sdknwelfnk card contetn
+    <template v-slot:footer>
+    footer
+  </template>
+  </UCard>
+  <!-- 
   <VaCard>
     <VaImage
       src="/images/x.webp"
@@ -15,7 +25,14 @@
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
     </VaCardContent>
   </VaCard>
+  -->
 
+  <Icon name="material-symbols:calendar-today" style="color: black" />
+  <Icon name="fa6-brands:github" style="color: red;width:64px;height:64px;" />
+  <Icon name="fa6-brands:linkedin" style="color: black;width:64px;height:64px;" />
+  <Icon name="openmoji:flag-germany" style="width:64px;height:64px;" />
+  <Icon name="openmoji:bullseye" style="width:32px;height:32px" />
+  
 
   <p>
     Material Design Icons<br>

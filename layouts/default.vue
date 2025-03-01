@@ -34,23 +34,14 @@
 
             <div>
 
-            <p>new lang switch</p>
+                <p>new lang switch</p>
 
-            <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
-                Switch to {{ locale.name }}
-            </NuxtLink>
-        </div>
-
-            <div>
-                <p>old lang switch</p>
-                <!-- Language Switcher -->
-            <select v-model="$i18n.locale" class="bg-transparent border p-1 rounded">
-                <option value="en">English</option>
-                <option value="de">Deutsch</option>
-            </select>
-
+                <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+                    Switch to {{ locale.name }}
+                </NuxtLink>
             </div>
 
+            <UVerticalNavigation :links="links" />
 
             <!-- Dark Mode Toggle -->
             <button @click="toggleDarkMode" class="ml-4">
@@ -78,6 +69,27 @@ const items = [
     { title: "Projects", icon: "projects", active: false },
     { title: "Contact", icon: "contact", active: false },
 ];
+
+const links = [{
+    label: 'Profile',
+    avatar: {
+        src: 'https://avatars.githubusercontent.com/u/739984?v=4'
+    },
+    badge: 100
+}, {
+    label: 'Home',
+    icon: 'i-heroicons-home',
+    to: '/'
+}, {
+    label: 'Projects',
+    icon: 'i-heroicons-chart-bar',
+    to: '/projectList'
+}, {
+    label: 'Contact',
+    icon: 'i-heroicons-command-line',
+    to: '/contact'
+}]
+
 const mounted = ref(false);
 
 const minimized = ref(false);
@@ -101,7 +113,7 @@ const colorMode = useColorMode()
 console.log(colorMode.preference)
 
 watch(locale, async (newLocale, oldLocale) => {
-    
+
     const currentRoute = router.currentRoute.value.path;
     console.log("Current route:", currentRoute, newLocale);
     const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute == "" ? "/" : currentRoute;

@@ -18,7 +18,9 @@
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@nuxt/content": "^3.2.2",
+    "@nuxt/icon": "^1.10.3",
     "@nuxt/image": "^1.9.0",
+    "@nuxt/ui": "^2.21.0",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/device": "^3.2.4",
     "@nuxtjs/i18n": "^9.2.1",
@@ -26,9 +28,7 @@
     "@nuxtjs/robots": "^5.2.4",
     "@nuxtjs/seo": "^2.2.0",
     "@pinia/nuxt": "^0.10.1",
-    "@vuestic/nuxt": "^1.0.21",
     "echarts": "^5.6.0",
-    "material-icons": "^1.13.14",
     "nuxt": "^3.15.4",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-echarts": "^0.2.6",
@@ -38,6 +38,10 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@iconify-json/fa6-brands": "^1.2.5",
+    "@iconify-json/fa6-solid": "^1.2.3",
+    "@iconify-json/material-symbols": "^1.2.14",
+    "@iconify-json/openmoji": "^1.2.6",
     "material-design-icons-iconfont": "^6.7.0",
     "sass-embedded": "^1.85.1"
   }

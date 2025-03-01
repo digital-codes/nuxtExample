@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-   ssr: true,
+  ssr: true,
   modules: [
     '@nuxtjs/i18n',
     '@nuxt/image',
@@ -14,16 +14,9 @@ export default defineNuxtConfig({
     'nuxt-easy-lightbox',
     '@nuxtjs/mdc',
     '@nuxtjs/color-mode',
-    "@vuestic/nuxt"
+    '@nuxt/ui',
+    '@nuxt/icon'
   ],
-  vuestic: {
-    config: {
-      // Config here
-    },
-    css: ["typography", "grid", "reset"],
-    fonts: false,
-    themeCookieKey: 'vuestic-theme'
-  },
   css: ['~/assets/scss/main.scss'],
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
@@ -77,7 +70,7 @@ export default defineNuxtConfig({
     }
   },
   echarts: {
-    renderer: ["canvas",'svg'],
+    renderer: ["canvas", 'svg'],
     charts: ['BarChart', 'LineChart', 'PieChart'],
     components: ['DatasetComponent', 'GridComponent', 'TooltipComponent'],
     features: ['LabelLayout', 'UniversalTransition']
