@@ -1,77 +1,56 @@
 <template>
   <div>
     <h1 v-if="doc">{{ doc.title }}</h1>
-    <ContentRenderer v-if="doc" :value="doc"/>
+    <ContentRenderer v-if="doc" :value="doc" />
     <p v-else>Content not found.</p>
   </div>
 
   <UCard>
     <template v-slot:header>
-    header
-  </template>
+      header
+    </template>
     sdknwelfnk card contetn
     <template v-slot:footer>
-    footer
-  </template>
+      footer
+    </template>
   </UCard>
-  <!-- 
-  <VaCard>
-    <VaImage
-      src="/images/x.webp"
-      class="cardImg"
-    />
-    <VaCardTitle>Title</VaCardTitle>
-    <VaCardContent>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </VaCardContent>
-  </VaCard>
-  -->
 
-  <Icon name="material-symbols:calendar-today" style="color: black" />
-  <Icon name="fa6-brands:github" style="color: red;width:64px;height:64px;" />
-  <Icon name="fa6-brands:linkedin" style="color: black;width:64px;height:64px;" />
-  <Icon name="openmoji:flag-germany" style="width:64px;height:64px;" />
-  <Icon name="openmoji:bullseye" style="width:32px;height:32px" />
-  
-
-  <p>
-    Material Design Icons<br>
-    <VaIcon class="material-icons">
-      calendar_today
-    </VaIcon>
-    <VaIcon name="book" color="#000" size="xl"/>
+  <p>Icons<br>
+    <Icon name="material-symbols:calendar-today" style="color: black" />
+    <Icon name="fa6-brands:github" style="color: red;width:64px;height:64px;" />
+    <Icon name="fa6-brands:linkedin" style="color: black;width:64px;height:64px;" />
+    <Icon name="openmoji:flag-germany" style="width:64px;height:64px;" />
+    <Icon name="openmoji:bullseye" style="width:32px;height:32px" />
   </p>
 
-  <p>
-    Font Awesome 5<br>
-    <VaIcon name="fab-github" size="64px" color="#ffffff"/>
-    <VaIcon name="fab-linkedin" size="xl" color="#00ff00"/>
-  </p>
-
-  
-
-  <VaDatePicker v-model="dateValue" color="#fff"/>
-
-
+  <UContainer>
+    <UPopover :popper="{ placement: 'bottom-start' }">
+      <UButton icon="i-heroicons-calendar-days-20-solid"
+        :label="locale == 'de' ? format(dateValue, 'dd.MM.yyyy HH:mm') : format(dateValue, 'yyyy-MM-dd HH:mm')" />
+      <template #panel="{ close }">
+        <DatePicker v-model="dateValue" is-required @close="close" />
+      </template>
+    </UPopover>
+  </UContainer>
 
 </template>
 
-<script setup>
+<script async setup>
 /*
 definePageMeta({
   layout: "custom", // Matches "layouts/custom.vue"
 });
 */
-
-const dateValue = ref(new Date());
-
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
+import { format } from 'date-fns'
 
 const { locale } = useI18n();
 const route = useRoute();
+const dateValue = ref(new Date())
+console.log("Date Value", dateValue.value)
 
-// ✅ Ensure correct file path based on locale
+// Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
 console.log("Current route:", route.path);
 let langPath = locale.value == "de" ? "/de" : ""
@@ -86,5 +65,8 @@ if (doc.value == null) {
   console.error("SSR Content Load Error:", error.value);
 }
 
+watch(dateValue, (newValue) => {
+  console.log("Date Value changed:", newValue);
+});
 
 </script>

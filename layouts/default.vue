@@ -1,22 +1,4 @@
 <template>
-    <div>
-        <!-- do not use template wrapper from vasidebar => hydration mismatches -->
-        <div class="h-52">
-            <VaSidebar :minimized="minimized" minimized-width="64px">
-                <template v-for="item in items" :key="item.title">
-                    <VaSidebarItem :active="item.active">
-                        <VaSidebarItemContent>
-                            <VaIcon :name="item.icon" />
-                            <VaSidebarItemTitle>
-                                {{ item.title }}
-                            </VaSidebarItemTitle>
-                        </VaSidebarItemContent>
-                    </VaSidebarItem>
-                </template>
-            </VaSidebar>
-        </div>
-        <VaCheckbox v-model="minimized" class="mt-2" label="Minimized" />
-    </div>
     <div class="layout" :class="{ dark: isDark }">
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-light dark:bg-dark">
@@ -78,7 +60,7 @@ const links = [{
     badge: 100
 }, {
     label: 'Home',
-    icon: 'i-heroicons-home',
+    icon: 'i-material-symbols-home',
     to: '/'
 }, {
     label: 'Projects',
@@ -86,7 +68,7 @@ const links = [{
     to: '/projectList'
 }, {
     label: 'Contact',
-    icon: 'i-heroicons-command-line',
+    icon: 'i-openmoji-bullseye',
     to: '/contact'
 }]
 
