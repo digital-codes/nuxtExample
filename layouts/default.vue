@@ -32,11 +32,25 @@
                         $t("contact") }}</NuxtLink>
             </nav>
 
-            <!-- Language Switcher -->
+            <div>
+
+            <p>new lang switch</p>
+
+            <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
+                Switch to {{ locale.name }}
+            </NuxtLink>
+        </div>
+
+            <div>
+                <p>old lang switch</p>
+                <!-- Language Switcher -->
             <select v-model="$i18n.locale" class="bg-transparent border p-1 rounded">
                 <option value="en">English</option>
                 <option value="de">Deutsch</option>
             </select>
+
+            </div>
+
 
             <!-- Dark Mode Toggle -->
             <button @click="toggleDarkMode" class="ml-4">
@@ -45,9 +59,9 @@
         </header>
 
         <!-- Page Content -->
-            <main class="p-6">
-                <slot />
-            </main>
+        <main class="p-6">
+            <slot />
+        </main>
         <!-- Footer -->
         <footer class="p-4 text-center">
             &copy; {{ new Date().getFullYear() }} My Website
@@ -73,11 +87,30 @@ const isDark = ref(false);
 const router = useRouter();
 const route = useRoute();
 
-const { locale, loadLocaleMessages } = useI18n();
+const { locale, locales, loadLocaleMessages } = useI18n();
+const switchLocalePath = useSwitchLocalePath()
+
+console.log("Current locale:", locale.value);
+console.log("Available locales:", locales.value);
+
+const availableLocales = computed(() => {
+    return locales.value.filter(i => i.code !== locale.value)
+})
 
 const colorMode = useColorMode()
 console.log(colorMode.preference)
 
+watch(locale, async (newLocale, oldLocale) => {
+    
+    const currentRoute = router.currentRoute.value.path;
+    console.log("Current route:", currentRoute, newLocale);
+    const newPath = newLocale !== 'de' ? `/${newLocale}${currentRoute}` : currentRoute == "" ? "/" : currentRoute;
+    console.log("New path:", newPath);
+    await navigateTo({ path: newPath })
+    //router.push(newPath);
+});
+
+/*
 watch(locale, async (newLocale, oldLocale) => {
     // when locale changes, load new locale messages here
     // otherwise new messages will be requested from router push but are not yet loaded
@@ -95,7 +128,7 @@ watch(locale, async (newLocale, oldLocale) => {
     await navigateTo({ path: newPath })
     //router.push(newPath);
 });
-
+*/
 const toggleDarkMode = () => {
     console.log(colorMode.preference)
     if (colorMode.preference === 'dark') {
@@ -122,7 +155,7 @@ const setMode = (mode) => {
 };
 
 // Enable reload ONLY in SSG (static mode)
-/* */
+/* 
 if (!import.meta.dev && !import.meta.server) {
     watch(
         () => route.fullPath,
@@ -133,7 +166,7 @@ if (!import.meta.dev && !import.meta.server) {
         }
     );
 }
-/* */
+*/
 
 
 onMounted(() => {

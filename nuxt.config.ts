@@ -42,8 +42,8 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'prefix_except_default', // ✅ Uses route-based detection
     locales: [
-      { code: 'en', iso: 'en-US', file: 'en.json' },
-      { code: 'de', iso: 'de-DE', file: 'de.json' }
+      { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
+      { code: 'de', iso: 'de-DE', file: 'de.json', name: 'Deutsch' }
     ],
     defaultLocale: 'de',
     lazy: true,

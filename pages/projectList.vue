@@ -5,9 +5,9 @@ import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
 const route = useRoute();
 
-const { data: projects } = await useAsyncData("projects", async () => {
-  //const p = await queryCollection("docs").path(contentPath).order('date', 'DESC').all() // Fetch all articles
-  // const p = locale.value == "de" ? await queryCollection("projectsDe").all() : await queryCollection("projectsEn").all()
+const name = ref("")
+name.value = locale.value + route.path
+const { data: projects } = await useAsyncData(name.value, async () => {
   const p = await queryCollection("projects").all()
   console.log("Articles:", p)
   /*

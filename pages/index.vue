@@ -54,14 +54,15 @@ import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
 const route = useRoute();
 
-const name = ref(route.path)
-
 // ✅ Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
 console.log("Current route:", route.path);
 let langPath = locale.value == "de" ? "/de" : ""
 const contentPath = `/docs${langPath}${route.path}`;
-const { data: doc, error } = await useAsyncData(async () => await queryCollection("docs").path(contentPath).first());
+
+const name = ref("")
+name.value = locale.value + route.path
+const { data: doc, error } = await useAsyncData(name.value, async () => await queryCollection("docs").path(contentPath).first());
 
 // ✅ Log fetched content or errors
 if (doc.value == null) {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 v-if="doc">{{ doc.title }}</h1>
+        <h1 v-if="doc">{{ doc.title }} {{  name  }}</h1>
         <ContentRenderer v-if="doc" :value="doc" :key="name" />
         <p v-else>Page not found.</p>
     </div>
@@ -13,7 +13,8 @@ import { useI18n } from "vue-i18n";
 const { locale } = useI18n();
 const route = useRoute();
 
-const name = ref()
+const count = ref(0);
+
 
 // ✅ Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
@@ -28,10 +29,13 @@ const coll = "projects"
 console.log("Content path:", contentPath, coll);
 // const { data: doc, error } = await useAsyncData(async () => await queryCollection(coll).path(contentPath).first());
 
-const { data: doc, error } = await useAsyncData('project', async () => {
+const name = ref("")
+name.value = locale.value + route.path
+const { data: doc, error } = await useAsyncData(name.value, async () => {
     try {
         const result = await queryCollection(coll).path(contentPath).first()
-        name.value = route.path
+        console.log("Fetched project data for:", name.value);
+        count.value++;
         return result;
     } catch (err) {
         console.error("Failed to fetch project data", err);
