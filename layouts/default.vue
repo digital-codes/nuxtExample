@@ -3,13 +3,18 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
             <nav>
+                <Icon name="material-symbols:menu" 
+                alt="Open menu" class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
+                <Icon name="material-symbols:close" 
+                alt="Close menu" class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
+
                 <UVerticalNavigation :links="links" />
             </nav>
 
             <div>
                 <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
                     <Icon :name="langIcon" 
-                    style="width:64px;height:64px;" :alt="l.name"/>
+                    style="width:64px;height:64px;" :alt="l.name" class="dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
                 </NuxtLink>
             </div>
             <!-- Dark Mode Toggle -->
@@ -182,4 +187,6 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+
 </style>
