@@ -1,30 +1,17 @@
 <template>
     <div class="layout" :class="{ dark: isDark }">
         <!-- Navigation -->
-        <header class="p-4 flex justify-between items-center bg-light dark:bg-dark">
+        <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
             <nav>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}`" class="mx-2">
-                    {{ $t("home") }}
-                </NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}projectList`" class="mx-2">
-                    {{
-                        $t("projectList") }}</NuxtLink>
-                <NuxtLink :to="`/${$i18n.locale !== 'de' ? $i18n.locale + '/' : ''}contact`" class="mx-2">
-                    {{
-                        $t("contact") }}</NuxtLink>
+                <UVerticalNavigation :links="links" />
             </nav>
 
             <div>
-
-                <p>new lang switch</p>
-
-                <NuxtLink v-for="locale in availableLocales" :key="locale.code" :to="switchLocalePath(locale.code)">
-                    Switch to {{ locale.name }}
+                <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
+                    <Icon :name="langIcon" 
+                    style="width:64px;height:64px;" :alt="l.name"/>
                 </NuxtLink>
             </div>
-
-            <UVerticalNavigation :links="links" />
-
             <!-- Dark Mode Toggle -->
             <button @click="toggleDarkMode" class="ml-4">
                 {{ !isDark ? "🌙 Dark Mode" : "☀️ Light Mode" }}
@@ -45,32 +32,31 @@
 
 <script setup>
 import { ref, onMounted, watch } from "vue";
+import { useI18n } from 'vue-i18n';
+const { t } = useI18n();
 
-const items = [
-    { title: "Home", icon: "home", active: true },
-    { title: "Projects", icon: "projects", active: false },
-    { title: "Contact", icon: "contact", active: false },
-];
+const langIcon = computed(() => locale.value != "de" ? "openmoji:flag-germany" : "openmoji:flag-united-kingdom")
 
-const links = [{
+const links = computed(() => [{
     label: 'Profile',
     avatar: {
         src: 'https://avatars.githubusercontent.com/u/739984?v=4'
     },
     badge: 100
 }, {
-    label: 'Home',
+    label: t("home"),
     icon: 'i-material-symbols-home',
-    to: '/'
+    to:  locale.value == "de" ? "/" : "/en" 
 }, {
-    label: 'Projects',
+    label: t("projectlist"),
     icon: 'i-heroicons-chart-bar',
-    to: '/projectList'
+    to: locale.value == "de" ? "/projectlist" : "/en/projectlist"
 }, {
-    label: 'Contact',
+    label: t("contact"),
     icon: 'i-openmoji-bullseye',
-    to: '/contact'
-}]
+    to: locale.value == "de" ? "/contact" : "/en/contact"
+}])
+
 
 const mounted = ref(false);
 

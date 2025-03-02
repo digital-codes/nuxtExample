@@ -5,7 +5,7 @@
     <p v-else>Content not found.</p>
   </div>
 
-  <UCard>
+  <UCard class="bg-white dark:bg-black text-black dark:text-white">
     <template v-slot:header>
       header
     </template>
@@ -23,7 +23,7 @@
     <Icon name="openmoji:bullseye" style="width:32px;height:32px" />
   </p>
 
-  <UContainer>
+  <UContainer class="bg-white dark:bg-black text-black dark:text-white">
     <UPopover :popper="{ placement: 'bottom-start' }">
       <UButton icon="i-heroicons-calendar-days-20-solid"
         :label="locale == 'de' ? format(dateValue, 'dd.MM.yyyy HH:mm') : format(dateValue, 'yyyy-MM-dd HH:mm')" />

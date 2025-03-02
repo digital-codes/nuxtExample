@@ -18,7 +18,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/icon'
   ],
-  css: ['~/assets/scss/main.scss'],
+  //css: ['~/assets/scss/main.scss'],
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
   },
