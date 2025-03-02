@@ -2,19 +2,48 @@
     <div class="layout" :class="{ dark: isDark }">
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
-            <nav>
-                <Icon name="material-symbols:menu" 
-                alt="Open menu" class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
-                <Icon name="material-symbols:close" 
-                alt="Close menu" class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
 
+            <nav>
+                <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
+                    color="primary" square 
+                    @click="mclick"/>
+                <div v-if="mopen">
                 <UVerticalNavigation :links="links" />
+                </div>
             </nav>
+            <div>
+            <Icon name="material-symbols:menu" alt="Open menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:menu-open" alt="Open menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:close" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:list" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:view-list" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:join" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:person-add" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:group-add" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:event" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:toggle-on" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:toggle-off" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:check-box" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="material-symbols:check-box-outline-blank" alt="Close menu"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                </div>
 
             <div>
                 <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
-                    <Icon :name="langIcon" 
-                    style="width:64px;height:64px;" :alt="l.name" class="dark:bg-white dark:shadow-none shadow shadow-cool-500"/>
+                    <Icon :name="langIcon" style="width:64px;height:64px;" :alt="l.name"
+                        class="dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 </NuxtLink>
             </div>
             <!-- Dark Mode Toggle -->
@@ -51,7 +80,7 @@ const links = computed(() => [{
 }, {
     label: t("home"),
     icon: 'i-material-symbols-home',
-    to:  locale.value == "de" ? "/" : "/en" 
+    to: locale.value == "de" ? "/" : "/en"
 }, {
     label: t("projectlist"),
     icon: 'i-heroicons-chart-bar',
@@ -61,6 +90,12 @@ const links = computed(() => [{
     icon: 'i-openmoji-bullseye',
     to: locale.value == "de" ? "/contact" : "/en/contact"
 }])
+
+const mopen = ref(false);
+const mclick = () => {
+    console.log("Click");
+    mopen.value = !mopen.value;
+}
 
 
 const mounted = ref(false);
@@ -187,6 +222,4 @@ a {
 a:hover {
     text-decoration: underline;
 }
-
-
 </style>
