@@ -1,0 +1,178 @@
+okl colors
+
+blue
+#01aefd
+
+text
+headings
+#363636
+normal
+#4a4a4a
+light:
+#999
+
+
+nav 
+#999999
+hover: text blue, bg: #fafafa;
+
+navbar bottom shadow when scrolling:
+0 0 8px rgba(0,0,0,.12);
+
+
+content headers:
+heading plus short underline <div class="divider"/>
+divider {
+  height: 3px;
+  border-radius: 50px;
+  background: #01aefd;
+  width: 60px;
+  margin-bottom: 2em;
+
+
+
+chips:
+#ff6460
+or blue
+
+chips text color: white
+
+
+footer 
+bg:
+#444f60
+headings: #fff
+text: #98a9c3 
+icons: blue
+
+
+projectlist
+2 column layout >=770px
+1 column below
+
+cards:
+bg: #eff4f7
+green: #01a8a8
+heading links
+green, decoration underline blue
+
+
+projects
+2 columns:
+  content 66%
+  info rest with margin left:8.3%
+ 
+hero image:
+.project .content img {
+  margin: 0 auto 2em;
+  box-shadow: .5em .5em #6cdcd5;
+  border: 1px solid #01a8a8;
+  display: block;
+
+
+
+red:
+'carnation': {
+    '50': '#fff1f1',
+    '100': '#ffe2e1',
+    '200': '#ffc8c7',
+    '300': '#ffa2a0',
+    '400': '#ff6460',
+    '500': '#f8403b',
+    '600': '#e5221d',
+    '700': '#c11814',
+    '800': '#a01814',
+    '900': '#841b18',
+    '950': '#480907',
+},
+
+green:
+'breaker-bay': {
+    '50': '#effefc',
+    '100': '#c8fff8',
+    '200': '#91fef3',
+    '300': '#52f6ec',
+    '400': '#1ee3dc',
+    '500': '#05c7c2',
+    '600': '#01a8a8',
+    '700': '#067d7f',
+    '800': '#0a6365',
+    '900': '#0e5153',
+    '950': '#002f33',
+},
+
+
+blue:
+'picton-blue': {
+    '50': '#eff9ff',
+    '100': '#def2ff',
+    '200': '#b6e7ff',
+    '300': '#75d6ff',
+    '400': '#2dc0ff',
+    '500': '#01aefd',
+    '600': '#0087d3',
+    '700': '#006baa',
+    '800': '#005b8c',
+    '900': '#064c74',
+    '950': '#04304d',
+},
+
+
+white:
+'white': {
+    '50': '#ffffff',
+    '100': '#efefef',
+    '200': '#dcdcdc',
+    '300': '#bdbdbd',
+    '400': '#989898',
+    '500': '#7c7c7c',
+    '600': '#656565',
+    '700': '#525252',
+    '800': '#464646',
+    '900': '#3d3d3d',
+    '950': '#292929',
+},
+
+footer 
+'river-bed': {
+    '50': '#f6f7f9',
+    '100': '#eceef2',
+    '200': '#d6dae1',
+    '300': '#b1bac8',
+    '400': '#8796a9',
+    '500': '#68798f',
+    '600': '#536176',
+    '700': '#444f60',
+    '800': '#3b4351',
+    '900': '#343a46',
+    '950': '#23272e',
+},
+oder
+'rock-blue': {
+    '50': '#f4f7f9',
+    '100': '#ebf0f4',
+    '200': '#dae3eb',
+    '300': '#c3d1de',
+    '400': '#aabbcf',
+    '500': '#98a9c3',  X
+    '600': '#7c8caf',
+    '700': '#6a7898',
+    '800': '#57627c',
+    '900': '#4a5365',  X
+    '950': '#2b303b',
+},
+dark blue
+'mariner': {
+    '50': '#f0f7fe',
+    '100': '#deecfb',
+    '200': '#c4e0f9',
+    '300': '#9bcbf5',
+    '400': '#6bafef',
+    '500': '#4990e8',
+    '600': '#3273dc',
+    '700': '#2b60ca',
+    '800': '#294fa4',
+    '900': '#264482',
+    '950': '#1c2b4f',
+},
+
