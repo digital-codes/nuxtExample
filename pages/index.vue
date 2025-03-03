@@ -1,29 +1,25 @@
 <template>
-  <div>
-    <h1 v-if="doc">{{ doc.title }}</h1>
-    <ContentRenderer v-if="doc" :value="doc" />
-    <p v-else>Content not found.</p>
-  </div>
 
   <UCard class="bg-white dark:bg-black text-black dark:text-white">
     <template v-slot:header>
       header
-    </template>
-    sdknwelfnk card contetn
-    <template v-slot:footer>
-      footer
-    </template>
-  </UCard>
-
-  <p>Icons<br>
-    <Icon name="material-symbols:calendar-today" style="color: black" />
-    <Icon name="fa6-brands:github" style="color: red;width:64px;height:64px;" />
-    <Icon name="fa6-brands:linkedin" style="color: black;width:64px;height:64px;" />
-    <Icon name="openmoji:flag-germany" style="width:64px;height:64px;" />
-    <Icon name="openmoji:bullseye" style="width:32px;height:32px" />
+      <p>Icons<br>
+    <Icon name="material-symbols:calendar-today" class="w-8 md:w-10 h-8 md:h-10 dark:bg-white" />
+    <Icon name="fa6-brands:github"  class="w-8 md:w-10 h-8 md:h-10 dark:bg-white" />
+    <Icon name="fa6-brands:linkedin"  class="w-8 md:w-10 h-8 md:h-10"/>
+    <Icon name="openmoji:bullseye"  class="w-8 md:w-10 h-8 md:h-10 dark:bg-white" />
   </p>
 
-  <UContainer class="bg-white dark:bg-black text-black dark:text-white">
+    </template>
+    <div>
+      sdknwelfnk card contetn
+      <h1 v-if="doc">{{ doc.title }}</h1>
+    <ContentRenderer v-if="doc" :value="doc" />
+    <p v-else>Content not found.</p>
+  </div>
+    <template v-slot:footer>
+      footer
+      <UContainer class="bg-white dark:bg-black text-black dark:text-white">
     <UPopover :popper="{ placement: 'bottom-start' }">
       <UButton icon="i-heroicons-calendar-days-20-solid"
         :label="locale == 'de' ? format(dateValue, 'dd.MM.yyyy HH:mm') : format(dateValue, 'yyyy-MM-dd HH:mm')" />
@@ -32,6 +28,10 @@
       </template>
     </UPopover>
   </UContainer>
+    </template>
+  </UCard>
+
+
 
 </template>
 
