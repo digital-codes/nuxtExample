@@ -3,7 +3,7 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
 
-            <nav>
+            <nav class="navbar">
                 <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
                     color="primary" square 
                     @click="mclick"/>
@@ -12,7 +12,7 @@
                     side="left"
                     >
                         <div>
-                        <UVerticalNavigation :links="links" click="navClick"/>
+                        <UVerticalNavigation :links="links"/>
                         </div>
                     </USlideover> 
             </nav>
@@ -103,7 +103,7 @@ const mclick = () => {
 }
 
 const navClick = (item) => {
-    console.log("Click", item);
+    console.log("Nav Click", item);
     mopen.value = false;
 }
 
@@ -116,6 +116,11 @@ const isDark = ref(false);
 
 const router = useRouter();
 const route = useRoute();
+
+router.afterEach(() => {
+    console.log("After each");
+    mopen.value = false;
+});
 
 const { locale, locales, loadLocaleMessages } = useI18n();
 const switchLocalePath = useSwitchLocalePath()
@@ -211,6 +216,15 @@ onMounted(() => {
 
 <style scoped lang="scss">
 /* Light and Dark Mode Using CSS Variables */
+
+.navbar {
+    position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem;
+  background-color: yellow;
+}
 
 .layout {
     background-color: var(--primary);
