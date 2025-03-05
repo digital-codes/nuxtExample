@@ -3,8 +3,9 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
 
-            <nav class="navbar">
-                <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
+            <UContainer class="max-w-full navbar">
+                <nav>
+                    <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
                     color="primary" square 
                     @click="mclick"/>
                     <USlideover v-model="mopen" 
@@ -17,6 +18,33 @@
                     </USlideover> 
             </nav>
             <div>
+                <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
+                    <Icon :name="langIcon" style="width:32px;height:32px;" :alt="l.name"
+                        class="dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                </NuxtLink>
+            </div>
+            <!-- Dark Mode Toggle -->
+            <UButton
+            @click="toggleDarkMode" 
+    :icon="isDark ?  'material-symbols:light-mode' : 'material-symbols:dark-mode'"
+    size="sm"
+    color="primary"
+    square
+    variant="solid"
+  />             
+            </UContainer>  
+            
+        </header>
+
+        <!-- Page Content, pt-32 for fixed header -->
+        <main class="p-6 pt-32">
+            <slot />
+        </main>
+        <!-- Footer -->
+        <footer class="p-4 text-center">
+            &copy; {{ new Date().getFullYear() }} My Website
+            <img src="~/assets/img/okl.svg" alt="Logo" class="h-6 inline-block  footer-logo" />
+            <div class="bg-white dark:bg-black">
             <Icon name="material-symbols:menu" alt="Open menu"
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 <Icon name="material-symbols:menu-open" alt="Open menu"
@@ -45,26 +73,6 @@
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 </div>
 
-            <div>
-                <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
-                    <Icon :name="langIcon" style="width:64px;height:64px;" :alt="l.name"
-                        class="dark:bg-white dark:shadow-none shadow shadow-cool-500" />
-                </NuxtLink>
-            </div>
-            <!-- Dark Mode Toggle -->
-            <button @click="toggleDarkMode" class="ml-4">
-                {{ !isDark ? "🌙 Dark Mode" : "☀️ Light Mode" }}
-            </button>
-        </header>
-
-        <!-- Page Content -->
-        <main class="p-6">
-            <slot />
-        </main>
-        <!-- Footer -->
-        <footer class="p-4 text-center">
-            &copy; {{ new Date().getFullYear() }} My Website
-            <img src="~/assets/img/okl.svg" alt="Logo" class="h-6 inline-block  footer-logo" />
         </footer>
     </div>
 </template>
@@ -219,11 +227,14 @@ onMounted(() => {
 
 .navbar {
     position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 2rem;
-  background-color: yellow;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem;
+    background-color: yellow;
 }
 
 .layout {
