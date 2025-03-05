@@ -7,9 +7,14 @@
                 <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
                     color="primary" square 
                     @click="mclick"/>
-                <div v-if="mopen">
-                <UVerticalNavigation :links="links" />
-                </div>
+                    <USlideover v-model="mopen" 
+                    :overlay="false"
+                    side="left"
+                    >
+                        <div>
+                        <UVerticalNavigation :links="links" click="navClick"/>
+                        </div>
+                    </USlideover> 
             </nav>
             <div>
             <Icon name="material-symbols:menu" alt="Open menu"
@@ -95,6 +100,11 @@ const mopen = ref(false);
 const mclick = () => {
     console.log("Click");
     mopen.value = !mopen.value;
+}
+
+const navClick = (item) => {
+    console.log("Click", item);
+    mopen.value = false;
 }
 
 
