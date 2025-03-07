@@ -3,7 +3,7 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
 
-            <UContainer class="max-w-full navbar">
+            <UContainer class="max-w-full p-4 navbar">
                 <nav>
                     <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
                         color="primary" square 
@@ -12,9 +12,10 @@
                     <USlideover v-model="mopen" 
                     :overlay="false"
                     side="left"
+                    style="margin-top:4rem;"
                     >
                         <div>
-                        <UVerticalNavigation :links="links"/>
+                        <UVerticalNavigation :links="links" class="mt-3 md:mt-6"/>
                         </div>
                     </USlideover> 
             </nav>
@@ -235,8 +236,12 @@ onMounted(() => {
     top: 0;
     left: 0;
     width: 100%;
-    padding: 2rem;
     background-color: yellow;
+    z-index: 1000;
+}
+
+.slideMenu {
+    margin-top:7rem;
 }
 
 .layout {

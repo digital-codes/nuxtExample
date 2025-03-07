@@ -45,6 +45,7 @@
     "@iconify-json/material-symbols": "^1.2.14",
     "@iconify-json/openmoji": "^1.2.6",
     "material-design-icons-iconfont": "^6.7.0",
-    "sass-embedded": "^1.85.1"
+    "sass-embedded": "^1.85.1",
+    "unenv": "^1.10.0"
   }
 }

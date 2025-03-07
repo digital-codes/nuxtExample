@@ -7,6 +7,9 @@ export default defineAppConfig({
                     solid: 'bg-white dark:bg-gray-900'
                 }
             }
+        },
+        slideover: {
+            width: "max-w-60 md:max-w-sm"
         }
     }
 })
