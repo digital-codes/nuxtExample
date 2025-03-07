@@ -6,8 +6,9 @@
             <UContainer class="max-w-full navbar">
                 <nav>
                     <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
-                    color="primary" square 
-                    @click="mclick"/>
+                        color="primary" square 
+                        @click="mclick"
+                        :aria-label="mopen ? t('close-menu') : t('open-menu')"/>
                     <USlideover v-model="mopen" 
                     :overlay="false"
                     side="left"
@@ -18,7 +19,7 @@
                     </USlideover> 
             </nav>
             <div>
-                <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)">
+                <NuxtLink v-for="l in availableLocales" :key="l.code" :to="switchLocalePath(l.code)" :aria-label="'Switch to language ' + l.name">
                     <Icon :name="langIcon" style="width:32px;height:32px;" :alt="l.name"
                         class="dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 </NuxtLink>
@@ -31,6 +32,7 @@
     color="primary"
     square
     variant="solid"
+    :aria-label="isDark ?  t('light-mode') : t('dark-mode')"
   />             
             </UContainer>  
             

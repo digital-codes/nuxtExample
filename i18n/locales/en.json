@@ -6,6 +6,11 @@
     "projects": "Projects",
     "contact": "Contact",
     "language": "Language",
-      "Page not found": "Page not Found"
+      "Page not found": "Page not Found",
+      "light-mode": "Light Mode",
+      "dark-mode": "Dark Mode",
+      "open-menu": "Open Menu",
+      "close-menu": "Close Menu"
+  
   }
   

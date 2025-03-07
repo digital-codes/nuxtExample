@@ -1,7 +1,8 @@
 <template>
   <p v-if="isMobile">This is a mobile device</p>
   <p v-else>This is a desktop device</p>
-  <NuxtLayout>
+  <NuxtRouteAnnouncer />
+    <NuxtLayout>
     <NuxtPage/>    
   </NuxtLayout>
 

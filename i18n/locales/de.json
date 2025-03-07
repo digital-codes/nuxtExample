@@ -6,6 +6,11 @@
     "projects": "Projekte",
     "contact": "Kontakt",
     "language": "Sprache",
-    "Page not found": "Seite nicht gefunden"
+    "Page not found": "Seite nicht gefunden",
+    "light-mode": "Heller Modus",
+    "dark-mode": "Dunkler Modus",
+    "open-menu": "Menü öffnen",
+    "close-menu": "Menü schließen"
+
 }
   
