@@ -30,7 +30,7 @@
     "@pinia/nuxt": "^0.10.1",
     "date-fns": "^2.30.0",
     "echarts": "^5.6.0",
-    "nuxt": "^3.15.4",
+    "nuxt": "^3.16.0",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-echarts": "^0.2.6",
     "pinia": "^3.0.1",
