@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode'
   },
   i18n: {
+    bundle:{optimizeTranslationDirective:false},
     strategy: 'prefix_except_default', // ✅ Uses route-based detection
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
