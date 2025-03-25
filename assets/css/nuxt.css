@@ -1,0 +1,4 @@
+/* mandatory for nuxt-ui */
+@import "tailwindcss";
+@import "@nuxt/ui";
+
