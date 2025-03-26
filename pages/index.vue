@@ -23,9 +23,9 @@
     <UPopover :popper="{ placement: 'bottom-start' }">
       <UButton icon="i-heroicons-calendar-days-20-solid"
         :label="locale == 'de' ? format(dateValue, 'dd.MM.yyyy HH:mm') : format(dateValue, 'yyyy-MM-dd HH:mm')" />
-      <template #panel="{ close }">
-        <DatePicker v-model="dateValue" is-required @close="close" />
-      </template>
+        <template #content>
+          <DatePicker v-model="dateValue" is-required  @close="closeDate"/>
+        </template>
     </UPopover>
   </UContainer>
     </template>
@@ -68,5 +68,9 @@ if (doc.value == null) {
 watch(dateValue, (newValue) => {
   console.log("Date Value changed:", newValue);
 });
+
+const closeDate = () => {
+  console.log("Close Date:",dateValue.value);
+} 
 
 </script>
