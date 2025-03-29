@@ -45,6 +45,8 @@
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 <Icon name="material-symbols:list" alt="Close menu"
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
+                <Icon name="openmoji:card-index" alt="List"
+                    class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 <Icon name="material-symbols:view-list" alt="Close menu"
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
                 <Icon name="material-symbols:join" alt="Close menu"
@@ -88,7 +90,7 @@ const links = computed(() => [{
     to: locale.value == "de" ? "/" : "/en"
 }, {
     label: t("projectlist"),
-    icon: 'i-heroicons-chart-bar',
+    icon: 'i-openmoji-card-file-box',
     to: locale.value == "de" ? "/projectlist" : "/en/projectlist"
 }, {
     label: t("contact"),
