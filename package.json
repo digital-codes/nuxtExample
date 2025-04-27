@@ -10,6 +10,11 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@deck.gl/core": "^9.1.8",
+    "@deck.gl/extensions": "^9.1.8",
+    "@deck.gl/geo-layers": "^9.1.8",
+    "@deck.gl/layers": "^9.1.8",
+    "@deck.gl/mesh-layers": "^9.1.8",
     "@fontsource/open-sans": "^5.1.1",
     "@fontsource/roboto": "^5.1.1",
     "@fortawesome/fontawesome-free": "^6.7.2",
@@ -28,8 +33,11 @@
     "@nuxtjs/robots": "^5.2.8",
     "@nuxtjs/seo": "^3.0.1",
     "@pinia/nuxt": "^0.10.1",
+    "@vue-leaflet/vue-leaflet": "^0.10.1",
+    "axios": "^1.8.4",
     "date-fns": "^4.1.0",
     "echarts": "^5.6.0",
+    "leaflet": "^1.9.4",
     "nuxt": "^3.16.1",
     "nuxt-easy-lightbox": "^1.0.2",
     "nuxt-echarts": "^0.2.6",
