@@ -35,7 +35,7 @@
         <!-- Footer -->
         <footer class="p-4 text-center">
             &copy; {{ new Date().getFullYear() }} My Website
-            <img src="~/assets/img/okl.svg" alt="Logo" class="h-6 inline-block  footer-logo" />
+            <img :src="logo" alt="Logo" class="h-6 inline-block  footer-logo" />
             <div class="bg-white dark:bg-black">
                 <Icon name="material-symbols:menu" alt="Open menu"
                     class="w-8 md:w-10 h-8 md:h-10 dark:bg-white dark:shadow-none shadow shadow-cool-500" />
@@ -75,6 +75,8 @@
 import { ref, onMounted, watch } from "vue";
 import { useI18n } from 'vue-i18n';
 const { t } = useI18n();
+
+const logo = import('~/assets/img/okl.svg');
 
 const langIcon = computed(() => locale.value != "de" ? "openmoji:flag-germany" : "openmoji:flag-united-kingdom")
 
