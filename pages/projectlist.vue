@@ -8,7 +8,7 @@ const route = useRoute();
 const name = ref("")
 name.value = locale.value + route.path
 const { data: projects } = await useAsyncData(name.value, async () => {
-  const p = await queryCollection("projects").all()
+  const p = await queryCollection("projects_" + locale.value).all()
   console.log("Articles:", p)
   /*
   .only(["title", "date", "description", "author", "_path"]) // Select metadata fields
@@ -16,19 +16,13 @@ const { data: projects } = await useAsyncData(name.value, async () => {
   .find()
   */
   const sorted = p.map((item) => {
-    const parts = item.stem.split("/"); // Split path by "/"
-    const rawDate = parts[2]?.match(/^\d{4}-\d{2}-\d{2}/)?.[0]; // Extract YYYY-MM-DD
+    const rawDate = item.stem?.match(/^\d{4}-\d{2}-\d{2}/)?.[0]; // Extract YYYY-MM-DD
+    console.log("Date:", rawDate);
     return {
       ...item, // Keep original data
       formattedDate: rawDate ? new Date(rawDate) : null, // Convert to Date object
     };
   })
-    .filter((item) => {
-      item.language = item.stem.split("/")[1]; // Second item is language
-      item.name = item.stem.split("/")[2]; // Second item is language
-      console.log("Item lang:", item.language)
-      return item.formattedDate && item.language === locale.value;
-    })
     .sort((a, b) => b.formattedDate - a.formattedDate) // Sort descending by date
   const sorted2 = sorted.map((item) => {
     if (!item.imgname) {
@@ -53,8 +47,8 @@ const { data: projects } = await useAsyncData(name.value, async () => {
   <div>
     <h1>{{ $t("project list") }}</h1>
     <ul>
-      <li v-for="project in projects" :key="project.path">
-        <NuxtLink :to="project.path">
+      <li v-for="project in projects" :key="project.id">
+        <NuxtLink :to="locale == 'de' ? '/projects/' + project.stem : '/' + locale + '/projects/' + project.stem">
           <h2>{{ project.title }}</h2>
         </NuxtLink>
         <p><strong>Date:</strong> {{ project.date }}</p>

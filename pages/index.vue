@@ -53,14 +53,24 @@ console.log("Date Value", dateValue.value)
 // Ensure correct file path based on locale
 console.log("Current locale:", locale.value);
 console.log("Current route:", route.path);
-let langPath = locale.value == "de" ? "/de" : ""
-const contentPath = `/docs${langPath}${route.path}`;
 
+let contentPath = route.path;
+if (route.path.startsWith('/' + locale.value + '/')) {
+  contentPath = route.path.slice(locale.value.length + 1);
+}
+if (!contentPath.endsWith('/')) {
+  contentPath += '/';
+}
+//console.log("Fetching content from path:", contentPath, locale.value);
 const name = ref("")
 name.value = locale.value + route.path
-const { data: doc, error } = await useAsyncData(name.value, async () => await queryCollection("docs").path(contentPath).first());
+//console.log("AsyncData key:", name.value);
+const collectionName = "docs_" + locale.value;
+//console.log("Using collection:", collectionName);
+//const { data: result, err } = await useAsyncData(name.value, async () => await queryCollection(collectionName).first());
+//console.log("Querying collection:", result, err)
+const { data: doc, error } = await useAsyncData(name.value, async () => await queryCollection(collectionName).path(contentPath).first());
 
-// ✅ Log fetched content or errors
 if (doc.value == null) {
   console.error("SSR Content Load Error:", error.value);
 }

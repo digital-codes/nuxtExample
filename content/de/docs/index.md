@@ -7,7 +7,8 @@ Dies ist der Inhalt der Startseite auf Deutsch.
 
 
 ## Deck Chart
-  <DeckChart></DeckChart>
+
+<DeckChart></DeckChart>
 
 
 
@@ -20,7 +21,11 @@ Dies ist der Inhalt der Startseite auf Deutsch.
 ## Card Container
 
 <FlexContainer>
+
 </FlexContainer>
+
+<ExampleChart></ExampleChart>
+
 
 ### Simple Table
 
