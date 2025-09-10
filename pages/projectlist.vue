@@ -30,8 +30,8 @@ const { data: projects } = await useAsyncData(name.value, async () => {
     }
     const img = item.imgname.replace(/^karlsruhe\//, "/images/projects/")
     // const path = item.path.replace(/^\/projects\/de/, "/projects");
-    const path = `${item.language == "de" ? "": "/" + item.language}/projects/${item.name}`;
-    console.log("Path:", path,item.language)
+    const path = `${locale.value == "de" ? "": "/" + locale.value}/projects/${item.stem}`;
+    console.log("Path:", path,locale.value)
     return {
       ...item,
       imgname: img,

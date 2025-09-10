@@ -54,25 +54,19 @@ console.log("Date Value", dateValue.value)
 console.log("Current locale:", locale.value);
 console.log("Current route:", route.path);
 
-let contentPath = route.path;
-if (route.path.startsWith('/' + locale.value + '/')) {
-  contentPath = route.path.slice(locale.value.length + 1);
-}
-if (!contentPath.endsWith('/')) {
-  contentPath += '/';
-}
-//console.log("Fetching content from path:", contentPath, locale.value);
+const contentPath = "/"; 
+console.log("Fetching content from path:", contentPath, locale.value);
 const name = ref("")
 name.value = locale.value + route.path
-//console.log("AsyncData key:", name.value);
+console.log("AsyncData key:", name.value);
 const collectionName = "docs_" + locale.value;
-//console.log("Using collection:", collectionName);
+console.log("Using collection:", collectionName);
 //const { data: result, err } = await useAsyncData(name.value, async () => await queryCollection(collectionName).first());
 //console.log("Querying collection:", result, err)
 const { data: doc, error } = await useAsyncData(name.value, async () => await queryCollection(collectionName).path(contentPath).first());
 
 if (doc.value == null) {
-  console.error("SSR Content Load Error:", error.value);
+  console.error("SSR Content Load Error in Index Page:", error.value);
 }
 
 watch(dateValue, (newValue) => {

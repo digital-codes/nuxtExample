@@ -35,7 +35,7 @@ const { data: doc, error } = await useAsyncData(name.value, async () => await qu
 //console.log("DOC: ",doc.value, error.value);
 // ✅ Log fetched content or errors
 if (doc.value == null) {
-  console.error("SSR Content Load Error:", error.value);
+  console.error("SSR Content Load Error in Contact Page:", error.value);
 }
 
 
