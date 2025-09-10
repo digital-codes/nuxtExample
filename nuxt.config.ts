@@ -78,5 +78,9 @@ export default defineNuxtConfig({
     charts: ['BarChart', 'LineChart', 'PieChart'],
     components: ['DatasetComponent', 'GridComponent', 'TooltipComponent'],
     features: ['LabelLayout', 'UniversalTransition']
+  },
+   nitro: {
+    // Nitro options
+    logLevel: "4"
   }
 });
