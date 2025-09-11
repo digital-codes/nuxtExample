@@ -1,4 +1,5 @@
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
+import { asSeoCollection } from '@nuxtjs/seo/content'
 
 export default defineContentConfig({
    // -----------------------------------------------------------------
@@ -9,7 +10,8 @@ export default defineContentConfig({
   defaultLocale: 'de', // <‑‑ important! set your default locale
 
   collections: {
-    "docs_de": defineCollection({
+    "docs_de": defineCollection(
+      asSeoCollection({
       type: 'page',
       source: 
         {
@@ -20,7 +22,7 @@ export default defineContentConfig({
         date: z.string(),
         imgname: z.string(),
       }),
-    }),
+    })),
     "docs_en": defineCollection({
       type: 'page',
       source: 

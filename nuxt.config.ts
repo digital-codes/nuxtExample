@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   telemetry: false,
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
-  ssr: true,
+  ssr: false, //true,
   site: { url: 'nuxt.test.com' },
   modules: [
     '@nuxtjs/i18n',
@@ -81,6 +81,11 @@ export default defineNuxtConfig({
   },
    nitro: {
     // Nitro options
-    logLevel: "4"
+    logLevel: "4",
+    hooks:{
+	    'prerender:generate'(route) {
+		    console.log('Generating route:',route.route);
+	    }
+    }
   }
 });
