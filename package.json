@@ -36,6 +36,7 @@
     "@pinia/nuxt": "^0.11.2",
     "@vue-leaflet/vue-leaflet": "^0.10.1",
     "axios": "^1.12.1",
+    "better-sqlite3": "^12.2.0",
     "date-fns": "^4.1.0",
     "echarts": "^6.0.0",
     "leaflet": "^1.9.4",

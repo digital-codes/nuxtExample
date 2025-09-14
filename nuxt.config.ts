@@ -11,11 +11,11 @@ export default defineNuxtConfig({
     '@nuxtjs/device',
     '@nuxtjs/robots',
     '@nuxtjs/sitemap',
+    '@nuxtjs/mdc',
     '@nuxt/content',
     '@pinia/nuxt',
     'nuxt-echarts',
     'nuxt-easy-lightbox',
-    '@nuxtjs/mdc',
     '@nuxtjs/color-mode',
     '@nuxt/ui',
     '@nuxt/icon'
