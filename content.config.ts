@@ -1,35 +1,28 @@
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
 
 export default defineContentConfig({
-   // -----------------------------------------------------------------
-  // Global i18n switch – tells @nuxt/content to automatically
-  // prepend the active locale to every collection path.
-  // -----------------------------------------------------------------
-  i18n: true,          // <‑‑ important! enables locale‑aware loading
-  defaultLocale: 'de', // <‑‑ important! set your default locale
-
   collections: {
     "docs_de": defineCollection(
+      {
+        type: 'page',
+        source:
         {
-      type: 'page',
-      source: 
-        {
-          include:'de/docs/*.md',
+          include: 'de/docs/*.md',
           prefix: '/'
         },
-      schema: z.object({
-        date: z.string(),
-        imgname: z.string(),
-      }),
-    }
-),
+        schema: z.object({
+          date: z.string(),
+          imgname: z.string(),
+        }),
+      }
+    ),
     "docs_en": defineCollection({
       type: 'page',
-      source: 
-        {
-          include:'en/docs/*.md',
-          prefix: '/'
-        },
+      source:
+      {
+        include: 'en/docs/*.md',
+        prefix: '/'
+      },
       schema: z.object({
         date: z.string(),
         imgname: z.string(),
@@ -37,11 +30,11 @@ export default defineContentConfig({
     }),
     "projects_de": defineCollection({
       type: 'page',
-      source: 
-        {
-          include:'de/projects/*.md',
-          prefix: '/'
-        },
+      source:
+      {
+        include: 'de/projects/*.md',
+        prefix: ''
+      },
       schema: z.object({
         date: z.string(),
         lab: z.string(),
@@ -57,11 +50,11 @@ export default defineContentConfig({
     }),
     "projects_en": defineCollection({
       type: 'page',
-      source: 
-        {
-          include:'en/projects/*.md',
-          prefix: '/'
-        },
+      source:
+      {
+        include: 'en/projects/*.md',
+        prefix: ''
+      },
       schema: z.object({
         date: z.string(),
         lab: z.string(),

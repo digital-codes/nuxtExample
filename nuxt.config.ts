@@ -9,6 +9,8 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxtjs/device',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
     '@nuxt/content',
     '@pinia/nuxt',
     'nuxt-echarts',
@@ -16,14 +18,13 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@nuxtjs/color-mode',
     '@nuxt/ui',
-    '@nuxt/icon',
-    '@nuxtjs/sitemap'
+    '@nuxt/icon'
   ],
   css: ['~/assets/css/main.css'],
   //css: ['~/assets/scss/main.scss'],
   sitemap: {
     debug: true,
-    sources: ['/api/__sitemap__/urls'],
+    //sources: ['/api/__sitemap__/urls'],
   },
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
@@ -52,7 +53,6 @@ export default defineNuxtConfig({
     langDir: 'locales/'
   },
   content: {
-    documentDriven: true,
     build: {
       markdown: {
         mdc: true, // Enables Vue components inside markdown files
