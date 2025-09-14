@@ -9,7 +9,6 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxtjs/device',
-    '@nuxtjs/seo',
     '@nuxt/content',
     '@pinia/nuxt',
     'nuxt-echarts',
@@ -17,12 +16,14 @@ export default defineNuxtConfig({
     '@nuxtjs/mdc',
     '@nuxtjs/color-mode',
     '@nuxt/ui',
-    '@nuxt/icon'
+    '@nuxt/icon',
+    '@nuxtjs/sitemap'
   ],
   css: ['~/assets/css/main.css'],
   //css: ['~/assets/scss/main.scss'],
   sitemap: {
     debug: true,
+    sources: ['/api/__sitemap__/urls'],
   },
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
@@ -87,9 +88,9 @@ export default defineNuxtConfig({
     // Nitro options
     logLevel: "+999", // Debug log level for nitro
     hooks:{
-	    'prerender:generate'(route) {
-		    console.log('Generating route:',route.route);
-	    }
+        'prerender:generate'(route) {
+            console.log('Generating route:',route.route);
+        }
     }
   }
 });
