@@ -11,7 +11,7 @@ export default defineContentConfig({
 
   collections: {
     "docs_de": defineCollection(
-      asSeoCollection({
+        {
       type: 'page',
       source: 
         {
@@ -22,7 +22,8 @@ export default defineContentConfig({
         date: z.string(),
         imgname: z.string(),
       }),
-    })),
+    }
+),
     "docs_en": defineCollection({
       type: 'page',
       source: 
@@ -55,7 +56,9 @@ export default defineContentConfig({
         tags: z.array(z.string()),
       })
     }),
-    "projects_en": defineCollection({
+    "projects_en": defineCollection(
+      asSeoCollection(
+      {
       type: 'page',
       source: 
         {
@@ -74,7 +77,9 @@ export default defineContentConfig({
         collaborators: z.array(z.string()),
         tags: z.array(z.string()),
       })
-    })
+    }
+  )
+  )
   }
 })
 

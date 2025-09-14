@@ -1,9 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   telemetry: false,
-  compatibilityDate: '2024-11-01',
+  compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  ssr: false, //true,
+  ssr: true,
   site: { url: 'nuxt.test.com' },
   modules: [
     '@nuxtjs/i18n',
@@ -21,6 +21,9 @@ export default defineNuxtConfig({
   ],
   css: ['~/assets/css/main.css'],
   //css: ['~/assets/scss/main.scss'],
+  sitemap: {
+    debug: true,
+  },
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
   },
@@ -48,6 +51,7 @@ export default defineNuxtConfig({
     langDir: 'locales/'
   },
   content: {
+    documentDriven: true,
     build: {
       markdown: {
         mdc: true, // Enables Vue components inside markdown files
@@ -81,7 +85,7 @@ export default defineNuxtConfig({
   },
    nitro: {
     // Nitro options
-    logLevel: "4",
+    logLevel: "+999", // Debug log level for nitro
     hooks:{
 	    'prerender:generate'(route) {
 		    console.log('Generating route:',route.route);
