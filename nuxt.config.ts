@@ -9,21 +9,22 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxt/image',
     '@nuxtjs/device',
+    '@nuxtjs/robots',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/mdc',
     '@nuxt/content',
     '@pinia/nuxt',
     'nuxt-echarts',
     'nuxt-easy-lightbox',
-    '@nuxtjs/mdc',
     '@nuxtjs/color-mode',
     '@nuxt/ui',
-    '@nuxt/icon',
-    '@nuxtjs/sitemap'
+    '@nuxt/icon'
   ],
   css: ['~/assets/css/main.css'],
   //css: ['~/assets/scss/main.scss'],
   sitemap: {
     debug: true,
-    sources: ['/api/__sitemap__/urls'],
+    //sources: ['/api/__sitemap__/urls'],
   },
   generate: {
     fallback: "404.html", // Ensures correct 404 handling in SSG mode
