@@ -1,5 +1,4 @@
 import { defineContentConfig, defineCollection, z } from '@nuxt/content'
-import { asSeoCollection } from '@nuxtjs/seo/content'
 
 export default defineContentConfig({
    // -----------------------------------------------------------------
@@ -56,9 +55,7 @@ export default defineContentConfig({
         tags: z.array(z.string()),
       })
     }),
-    "projects_en": defineCollection(
-      asSeoCollection(
-      {
+    "projects_en": defineCollection({
       type: 'page',
       source: 
         {
@@ -77,9 +74,7 @@ export default defineContentConfig({
         collaborators: z.array(z.string()),
         tags: z.array(z.string()),
       })
-    }
-  )
-  )
+    }),
   }
 })
 
