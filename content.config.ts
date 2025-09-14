@@ -33,7 +33,7 @@ export default defineContentConfig({
       source:
       {
         include: 'de/projects/*.md',
-        prefix: ''
+        prefix: '/'
       },
       schema: z.object({
         date: z.string(),
@@ -53,7 +53,7 @@ export default defineContentConfig({
       source:
       {
         include: 'en/projects/*.md',
-        prefix: ''
+        prefix: '/'
       },
       schema: z.object({
         date: z.string(),
