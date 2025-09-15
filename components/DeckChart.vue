@@ -214,7 +214,8 @@ export default defineComponent({
     },
     async beforeMount() {
         try {
-            const response = await fetch("/data/lanes.json")
+            //const response = await fetch("/data/lanes.json")
+            const response = await fetch("https://vp2.akugel.de/data/lanes.json")
             if (!response.ok) {
                 alert("Fetch failed: ", response.status)
                 return
