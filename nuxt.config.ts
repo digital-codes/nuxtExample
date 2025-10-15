@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   telemetry: false,
   compatibilityDate: '2025-07-15',
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+    // 'key' removed: not part of ModuleOptions, to satisfy TypeScript types. now at bottom of window
+  },
   ssr: true,
   site: { url: 'nuxt.test.com' },
   modules: [
@@ -20,8 +23,9 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/icon'
   ],
-  css: ['~/assets/css/main.css'],
+  //css: ['~/assets/scss/okl.scss'],
   //css: ['~/assets/scss/main.scss'],
+  css: ['~/assets/css/main.css'],
   sitemap: {
     debug: true,
     //sources: ['/api/__sitemap__/urls'],
@@ -41,14 +45,13 @@ export default defineNuxtConfig({
     storageKey: 'nuxt-color-mode'
   },
   i18n: {
-    bundle:{optimizeTranslationDirective:false},
+    bundle:{fullInstall:true},
     strategy: 'prefix_except_default', // ✅ Uses route-based detection
     locales: [
       { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
       { code: 'de', iso: 'de-DE', file: 'de.json', name: 'Deutsch' }
     ],
     defaultLocale: 'de',
-    lazy: true,
     detectBrowserLanguage: false, // ❌ Disable cookie-based detection
     langDir: 'locales/'
   },

@@ -48,78 +48,52 @@
 </template>
 
 
-<script>
-
+<script setup lang="ts">
+import { ref, onBeforeMount } from 'vue'
+import axios from 'axios'
 
 import CardComp from './CardComp.vue'
-
-
-import axios from 'axios'
-import { ref } from "vue"
-
 import DownLoad from './DownLoad.vue'
 
+const props = withDefaults(defineProps<{
+  stickyIndex?: boolean
+  stickyHeader?: boolean
+}>(), {
+  stickyIndex: true,
+  stickyHeader: true,
+})
 
- export default {
-    components: {
-      CardComp,
-      DownLoad,
-    },
-    props: {
-      stickyIndex: {
-        required: true,
-        default: true,
-      },
-      stickyHeader: {
-        required: true,
-        default: true,
-      }
-    },
-    methods: {
-      getHdrClass(i) {
-        if (i == 0) {
-          if (this.stickyIndex && this.stickyHeader) return "sticky-index"
-          if (!this.stickyIndex && this.stickyHeader) return "sticky-hdr"
-          if (this.stickyIndex && !this.stickyHeader) return "sticky-col"
-          return ""
-        } else {
-          return this.stickyHeader? "sticky-hdr" : ""
-        }
-      },
-      getIdxClass() {
-        return this.stickyIndex ? "sticky-col" : ""
-      },
-      isIdxPos(i) {
-        // Note: index may be non numerical
-        //console.log("Index:",i,this.hdrs)
-        return (this.stickyIndex && (i==this.hdrs[0]))
-      }
-    },
-    data() {
-      return {
-      }
-    },
-     setup() {
-       // initialize parms
-        const rows = ref([])
-        const hdrs = ref([])
-        const dataLoaded = ref(false)
-        return { dataLoaded, hdrs, rows }
-    },
-    async beforeMount() {
-        // initialize data
-        let url = "/data/table.json"
-        let r = await axios.get(url)
-        this.rows = r.data
-        console.log("Rows:",this.rows)
-        // extract keys from item 0
-        this.hdrs = Object.keys(this.rows[0])
-        console.log("Hdrs:",this.hdrs)
-        // update loaded  state: chart will be mounted via v-if
-        this.dataLoaded = true
-        console.log("Loaded",this.dataLoaded)
-    },
+const rows = ref<any[]>([])
+const hdrs = ref<string[]>([])
+const dataLoaded = ref(false)
+
+function getHdrClass(i: number) {
+  if (i === 0) {
+    if (props.stickyIndex && props.stickyHeader) return 'sticky-index'
+    if (!props.stickyIndex && props.stickyHeader) return 'sticky-hdr'
+    if (props.stickyIndex && !props.stickyHeader) return 'sticky-col'
+    return ''
+  } else {
+    return props.stickyHeader ? 'sticky-hdr' : ''
   }
+}
+
+function getIdxClass() {
+  return props.stickyIndex ? 'sticky-col' : ''
+}
+
+function isIdxPos(i: number | string) {
+  // index may be non numerical (object key when iterating a row)
+  return props.stickyIndex && (i == hdrs.value[0])
+}
+
+onBeforeMount(async () => {
+  const url = '/data/table.json'
+  const r = await axios.get(url)
+  rows.value = r.data
+  hdrs.value = Object.keys(rows.value[0] || {})
+  dataLoaded.value = true
+})
 </script>
 
 <style scoped>

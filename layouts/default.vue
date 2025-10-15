@@ -3,11 +3,11 @@
         <!-- Navigation -->
         <header class="p-4 flex justify-between items-center bg-white dark:bg-black text-black dark:text-white">
 
-            <UContainer class="max-w-full p-4 navbar">
+            <UContainer id="navcontainer" class="max-w-full p-4 navbar">
                 <nav>
-                    <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="sm"
+                    <UButton :icon="mopen ? 'material-symbols:close' : 'material-symbols:menu-open'" size="xl"
                         color="primary" square @click="mclick" :aria-label="mopen ? t('close-menu') : t('open-menu')" />
-                    <USlideover v-model:open="mopen" :overlay="false" side="left" style="margin-top:4rem;">
+                    <USlideover id="navslide" v-model:open="mopen" :overlay="false" side="left" style="margin-top:4rem;" title="Slideover with title">
                         <template #content>
                             <UNavigationMenu orientation="vertical" :items="links" class="mt-3 md:mt-6" />
                         </template>
@@ -27,6 +27,7 @@
             </UContainer>
 
         </header>
+
 
         <!-- Page Content, pt-32 for fixed header -->
         <main class="p-6 pt-32">
@@ -100,7 +101,7 @@ const links = computed(() => [{
 
 const mopen = ref(false);
 const mclick = () => {
-    console.log("Click");
+    console.log("Menue Click");
     mopen.value = !mopen.value;
 }
 
