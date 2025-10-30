@@ -4,6 +4,7 @@
     <ContentRenderer v-if="doc" :value="doc" />
     <p v-else>Content not found.</p>
   </div>
+  <Schedule />
 </template>
 
 <script setup>
@@ -12,6 +13,8 @@ definePageMeta({
 });
 import { useRoute } from "vue-router";
 import { useI18n } from "vue-i18n";
+
+import Schedule from "../components/Schedule.vue";
 
 const { locale } = useI18n();
 const route = useRoute();
