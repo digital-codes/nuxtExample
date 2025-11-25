@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { withLeadingSlash } from 'ufo'
 import type { Collections } from '@nuxt/content'
+import { ref , computed } from 'vue'
 
 const route = useRoute()
 const { locale } = useI18n()
@@ -10,6 +11,7 @@ const pg = "page-" + locale.value + slug.value
 const pj = "projects_" + locale.value
 console.log("PG:", pg, "Projects:", pj,"Slug:", slug.value, "Locale:", locale.value)
 
+const img = ref("")
 
 /*
 const { data: page } = await useAsyncData('page-' + slug.value, async () => {
@@ -32,9 +34,25 @@ const { data: page } = await useAsyncData(pg, async () => {
 }, {
     watch: [locale], // Refetch when locale changes
 })
+
+console.log("Page data:", page)
 </script>
 
 <template>
+    <!-- 
+    <p>
+    {{ pg }}, {{ pj }}
+        {{ page?.imgname }}
+    </p>
+    <h1>
+    {{ page?.title }}
+    </h1>
+    <div>
+    {{ page?.body }}
+    </div>
+     -->
+
+    <img  v-if="page?.imgname" :src="page?.imgname.replace(/^karlsruhe\//, '/images/projects/')" alt="page image" width="200px"/>
     <ContentRenderer v-if="page" :value="page" />
     <div v-else>
         <h1>Page not found</h1>
