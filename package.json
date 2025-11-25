@@ -47,7 +47,7 @@
     "sharp": "^0.34.5",
     "tailwindcss": "^4.1.17",
     "v-calendar": "^3.1.2",
-    "vue-cal": "^4.10.2"
+    "vue-cal": "^5.0.1-rc.33"
   },
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.2.6",

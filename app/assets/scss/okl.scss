@@ -1,0 +1,362 @@
+// ------------------------------------------------------------
+// Modernized OKL theme (converted from okl.css)
+// ------------------------------------------------------------
+
+// @use '_variables.scss' as *;
+@use "sass:map"; // Import map utilities
+@use "sass:meta"; // Required for string conversion
+@use "sass:color"; // Required for color functions
+@use "sass:string"; // Required for string functions
+
+// Example usage of a color variable
+
+//@import "@fontsource/open-sans/latin-ext.css";
+//@import "@fontsource/open-sans/latin-ext-italic.css";
+
+@import "~/node_modules/@fontsource/roboto/latin-ext.css";
+@import "~/node_modules/@fontsource/roboto/latin-ext-italic.css";
+@import "@fortawesome/fontawesome-free/css/all.css";
+@import "material-design-icons-iconfont/dist/material-design-icons.min.css";
+
+
+$lightColors: (
+    color-bg: #ffffff,
+    color-text: #363636,
+    color-primary: #00d1b2,
+    color-border: #dbdbdb,
+    color-navbar-bg: #ffffff,
+    color-navbar-text: #363636,
+    color-hero-bg: #f5f5f5,
+    color-hero-text: #363636,
+    color-accent: #01a8a8
+);
+
+$darkColors: (
+    color-bg: #1e1e1e,
+    color-text: #eeeeee,
+    color-primary: #00c4a7,
+    color-border: #333333,
+    color-navbar-bg: #121212,
+    color-navbar-text: #eeeeee,
+    color-hero-bg: #181818,
+    color-hero-text: #eeeeee,
+    color-accent: #007070,
+
+);
+
+@function light-color($name) {
+    @return map.get($lightColors, $name);
+}
+
+@function dark-color($name) {
+    @return map.get($darkColors, $name);
+}
+
+$derivedColorsLight: (
+    color-accent-hover: color.scale(map.get($lightColors, "color-accent"), $lightness: -10%),
+    color-bg-gray: color.scale(map.get($lightColors, "color-bg"), $lightness: -5%)
+    /*
+    "primary": light-color("cfg-red-2"),
+    "secondary": light-color("cfg-blue-1"),
+    "accent": light-color("cfg-cyan-1")
+    */
+);
+
+$derivedColorsDark: (
+    color-accent-hover: color.scale(map.get($darkColors, "color-accent"), $lightness: +10%),
+    color-bg-gray: color.scale(map.get($darkColors, "color-bg"), $lightness: +5%)
+    /*
+    "primary": dark-color("cfg-red-2"),
+    "secondary": dark-color("cfg-blue-1"),
+    "accent": dark-color("cfg-cyan-1")
+    */
+);
+
+
+
+// === Variables ===
+:root {
+
+    /*
+  --color-bg: #ffffff;
+  --color-text: #363636;
+  --color-primary: #00d1b2;
+  --color-border: #dbdbdb;
+  --color-navbar-bg: #ffffff;
+  --color-navbar-text: #363636;
+  --color-hero-bg: #f5f5f5;
+  --color-hero-text: #363636;
+  --color-accent: #01a8a8;
+*/
+    @each $name, $color in $lightColors {
+        --#{$name}: #{$color};
+    }
+
+    @each $name, $color in $derivedColorsLight {
+        --#{$name}: #{$color};
+    }
+    --va-font-family: "Roboto",sans-serif;
+
+}
+
+// === Dark mode overrides ===
+[data-theme='dark'] {
+
+    /*
+  --color-bg: #1e1e1e;
+  --color-text: #eeeeee;
+  --color-primary: #00c4a7;
+  --color-border: #333333;
+  --color-navbar-bg: #121212;
+  --color-navbar-text: #eeeeee;
+  --color-hero-bg: #181818;
+  --color-hero-text: #eeeeee;
+  --color-accent: #007070;
+*/
+    @each $name, $color in $darkColors {
+        --#{$name}: #{$color};
+    }
+
+    @each $name, $color in $derivedColorsDark {
+        --#{$name}: #{$color};
+    }
+    --va-font-family: "Roboto",sans-serif;
+}
+
+// === Base Typography and Body ===
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: "Roboto",sans-serif;
+    --va-font-family: "Roboto",sans-serif;
+}
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+
+    &:hover {
+        color: var(--color-accent-hover);
+    }
+}
+
+// === Navbar ===
+.navbar {
+    background-color: var(--color-navbar-bg);
+    color: var(--color-navbar-text);
+    border-bottom: 1px solid var(--color-border);
+    padding: 0.75rem 1rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    .navbar-brand {
+        display: flex;
+        align-items: center;
+
+        img {
+            height: 32px;
+            margin-right: 0.5rem;
+        }
+
+        strong {
+            font-size: 1.25rem;
+            color: var(--color-navbar-text);
+        }
+    }
+
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .navbar-item {
+        padding: 0.5rem 1rem;
+        color: var(--color-navbar-text);
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover,
+        &.is-active {
+            color: var(--color-primary);
+        }
+    }
+
+    .navbar-burger {
+        display: none;
+        cursor: pointer;
+
+        span {
+            display: block;
+            height: 2px;
+            width: 18px;
+            background: var(--color-navbar-text);
+            margin: 3px 0;
+            transition: all 0.2s ease;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .navbar-menu {
+            display: none;
+
+            &.is-active {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+
+        .navbar-burger {
+            display: block;
+        }
+    }
+}
+
+// === Hero ===
+.hero {
+    background-color: var(--color-hero-bg);
+    color: var(--color-hero-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    .hero-body {
+        padding: 2rem 1rem;
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--color-hero-text);
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--color-hero-text);
+        }
+    }
+}
+
+// === Section ===
+.section {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    padding: 4rem 1.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: var(--color-text);
+    }
+
+    p {
+        margin-bottom: 1rem;
+    }
+
+    &.is-grey {
+        background-color: var(--color-bg-gray);
+    }
+
+    &.is-medium {
+        padding: 6rem 1.5rem;
+    }
+
+    &.is-large {
+        padding: 8rem 1.5rem;
+    }
+}
+
+
+// from theme.scss
+// project specific styles
+.projectIcon {
+    width: 32px; 
+    height: 32px; 
+    // background: none; 
+    position: relative; 
+    bottom: -.5rem;  
+    box-shadow: none; 
+    border: none;
+    margin: 0;
+    margin-right: 10px;
+}
+.projectChecks {
+    display:block;
+}
+
+// cards
+.cardImg {
+    width: 32px; 
+    height:auto;
+    margin: .5rem;
+    padding:.1rem;
+}
+
+.PIC1>img {
+    width: 50vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 40vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 30vw;
+    }
+}
+
+.PIC2>img {
+    width: 60vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 40vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 20vw;
+    }
+}
+
+.IMG1 {
+    width: 25vw;
+    height: auto;
+    max-height: fit-content;
+    border: solid 1px var(--border-grey);
+    border-radius: 5px;
+    padding: 5px;
+
+    @media (max-width: 768px) {
+        width: 20vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 15vw;
+    }
+}
+
+.IMG2 {
+    width: 20vw;
+    height: auto;
+    max-height: fit-content;
+
+    @media (max-width: 768px) {
+        width: 15vw;
+    }
+
+    @media (max-width: 480px) {
+        width: 10vw;
+    }
+}
