@@ -51,9 +51,10 @@ console.log("Page data:", page)
     {{ page?.body }}
     </div>
      -->
-
-    <img  v-if="page?.imgname" :src="page?.imgname.replace(/^karlsruhe\//, '/images/projects/')" alt="page image" width="200px"/>
-    <ContentRenderer v-if="page" :value="page" />
+    <!-- 
+        <img  v-if="page?.imgname" :src="page?.imgname.replace(/^karlsruhe\//, '/images/projects/')" alt="page image" width="200px"/>
+     -->
+    <CustomRenderer v-if="page" :value="page" />
     <div v-else>
         <h1>Page not found</h1>
         <p>This page {{ pg }}, {{ pj }} doesn't exist in {{ locale }} language.</p>
@@ -82,3 +83,5 @@ const { data: page } = await useAsyncData(pg, async () => {
 })
 
 */
+
+
