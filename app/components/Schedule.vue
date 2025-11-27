@@ -104,12 +104,12 @@ const generateRandomEvents = (startDate: Date, endDate:Date) => {
   -->
   <vue-cal :locale="locale" weeknumbers="true" 
   :titleBar="true"
-  :views="['month', 'days', 'day']" 
+  :views="['month', 'week', 'day']" 
   view="month"
    :events="events" 
     editable-events 
-    :time-from="8 * 60"
-    :time-to="19 * 60"
+    :time-from="6 * 60"
+    :time-to="22 * 60"
     :views-bar="true"
     @ready="onReady"
     @view-change="onViewChange"
