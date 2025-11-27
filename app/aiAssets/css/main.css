@@ -1,0 +1,232 @@
+/* assets/css/main.css */
+
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/**
+ * Design tokens matching the OK Lab Karlsruhe (Hugo Fresh / Bulma) styling,
+ * now wired into Nuxt UI's light/dark design system.
+ *
+ * Nuxt UI + @nuxtjs/color-mode automatically add `.dark` on <html>,
+ * we only define how tokens should look in both modes.
+ */
+
+/* -------------------------------------------------
+ * 1. Tailwind / Nuxt UI theme tokens (@theme)
+ * ------------------------------------------------- */
+
+@theme {
+  /* Typography – Bulma-like sans stack */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+  /* Slightly rounder radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* --------------------------------------
+   * Brand (primary) – turquoise
+   * Based on Bulma primary: #00D1B2
+   * ------------------------------------ */
+
+  --color-brand-50:  #ebfffc;
+  --color-brand-100: #ccfff7;
+  --color-brand-200: #99fff0;
+  --color-brand-300: #66ffe8;
+  --color-brand-400: #1affdd;
+  --color-brand-500: #00d1b2; /* main brand */
+  --color-brand-600: #00a38b;
+  --color-brand-700: #008a75;
+  --color-brand-800: #00705f;
+  --color-brand-900: #005245;
+  --color-brand-950: #00332b;
+
+  /* --------------------------------------
+   * Accent / warning – yellow
+   * Based on Bulma warning: #FFDD57
+   * ------------------------------------ */
+
+  --color-accent-50:  #fffbeb;
+  --color-accent-100: #fff7d6;
+  --color-accent-200: #ffefad;
+  --color-accent-300: #ffe785;
+  --color-accent-400: #ffdd57; /* main accent */
+  --color-accent-500: #ffd11a;
+  --color-accent-600: #e6b800;
+  --color-accent-700: #bd9700;
+  --color-accent-800: #8f7200;
+  --color-accent-900: #665200;
+  --color-accent-950: #3d3100;
+
+  /* --------------------------------------
+   * Link – blue (Bulma link: #3273DC)
+   * ------------------------------------ */
+
+  --color-link-50:  #eef3fc;
+  --color-link-100: #dce7f9;
+  --color-link-200: #b9cff3;
+  --color-link-300: #96b8ed;
+  --color-link-400: #6f9de7;
+  --color-link-500: #3273dc; /* main link color */
+  --color-link-600: #2160c4;
+  --color-link-700: #1b4fa1;
+  --color-link-800: #153c7a;
+  --color-link-900: #0f2b57;
+  --color-link-950: #091a34;
+
+  /* --------------------------------------
+   * Neutral greys – base for text/background
+   * ------------------------------------ */
+
+  --color-neutral-50:  #f9fafb;
+  --color-neutral-100: #f4f5f7;
+  --color-neutral-200: #e5e7eb;
+  --color-neutral-300: #d2d6dc;
+  --color-neutral-400: #9fa6b2;
+  --color-neutral-500: #6b7280;
+  --color-neutral-600: #4b5563;
+  --color-neutral-700: #374151;
+  --color-neutral-800: #252f3f;
+  --color-neutral-900: #161e2e;
+  --color-neutral-950: #0b1020;
+}
+
+/* -------------------------------------------------
+ * 2. Map semantic colors to shades for light/dark
+ * -------------------------------------------------
+ * Nuxt UI exposes semantic utilities like:
+ *   - text-primary, text-default, text-muted
+ *   - bg-default, bg-muted, bg-elevated
+ *   - border-default, etc.
+ * We bind those to our neutral + brand colors here.
+ * Docs: https://ui.nuxt.com/docs/getting-started/theme/css-variables
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Which shade each semantic color uses in LIGHT mode */
+  --ui-primary: var(--ui-color-primary-500);
+  --ui-secondary: var(--ui-color-secondary-500);
+  --ui-success: var(--ui-color-success-500);
+  --ui-info: var(--ui-color-info-500);
+  --ui-warning: var(--ui-color-warning-500);
+  --ui-error: var(--ui-color-error-500);
+
+  /* Text colors */
+  --ui-text-dimmed: var(--ui-color-neutral-400);
+  --ui-text-muted: var(--ui-color-neutral-500);
+  --ui-text-toned: var(--ui-color-neutral-600);
+  --ui-text: var(--ui-color-neutral-800);
+  --ui-text-highlighted: var(--ui-color-neutral-900);
+  --ui-text-inverted: white;
+
+  /* Background colors */
+  --ui-bg: white;
+  --ui-bg-muted: var(--ui-color-neutral-50);
+  --ui-bg-elevated: var(--ui-color-neutral-100);
+  --ui-bg-accented: var(--ui-color-neutral-200);
+  --ui-bg-inverted: var(--ui-color-neutral-900);
+
+  /* Border colors */
+  --ui-border: var(--ui-color-neutral-200);
+  --ui-border-muted: var(--ui-color-neutral-200);
+  --ui-border-accented: var(--ui-color-neutral-300);
+  --ui-border-inverted: var(--ui-color-neutral-900);
+
+  /* Layout tokens */
+  --ui-radius: 0.5rem;              /* slightly softer rounding */
+  --ui-container: 80rem;            /* default container width */
+  --ui-header-height: --spacing(16);
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Same semantic colors, slightly lighter in DARK mode */
+  --ui-primary: var(--ui-color-primary-400);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+
+  /* Text colors for dark background */
+  --ui-text-dimmed: var(--ui-color-neutral-500);
+  --ui-text-muted: var(--ui-color-neutral-400);
+  --ui-text-toned: var(--ui-color-neutral-300);
+  --ui-text: var(--ui-color-neutral-200);
+  --ui-text-highlighted: white;
+  --ui-text-inverted: var(--ui-color-neutral-900);
+
+  /* Background colors in dark mode */
+  --ui-bg: var(--ui-color-neutral-900);
+  --ui-bg-muted: var(--ui-color-neutral-900);
+  --ui-bg-elevated: var(--ui-color-neutral-800);
+  --ui-bg-accented: var(--ui-color-neutral-700);
+  --ui-bg-inverted: white;
+
+  /* Borders in dark mode */
+  --ui-border: var(--ui-color-neutral-800);
+  --ui-border-muted: var(--ui-color-neutral-700);
+  --ui-border-accented: var(--ui-color-neutral-700);
+  --ui-border-inverted: white;
+}
+
+/* -------------------------------------------------
+ * 3. Base styles for body
+ * -------------------------------------------------
+ * Nuxt UI already applies text-default + bg-default;
+ * we just add a nice transition.
+ */
+
+@layer base {
+  body {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* -------------------------------------------------
+ * 4. Custom utilities matching old layout,
+ *    but using semantic colors so they auto-theme
+ * ------------------------------------------------- */
+
+/* Hero background: neutral muted, works in light/dark */
+.hero-oklab {
+  @apply bg-muted py-16 md:py-24;
+}
+
+.hero-oklab-title {
+  @apply text-4xl md:text-5xl font-bold text-highlighted leading-tight;
+}
+
+.hero-oklab-subtitle {
+  @apply mt-4 text-xl md:text-2xl font-semibold text-toned;
+}
+
+.hero-oklab-cta {
+  @apply mt-8 inline-flex items-center rounded-md px-6 py-3 text-base font-semibold
+    bg-primary text-inverted hover:bg-primary/90 transition-colors;
+}
+
+/* Section headline like “Das Konzept der Offenheit” blocks */
+.section-oklab-title {
+  @apply text-2xl md:text-3xl font-semibold text-highlighted mb-2;
+}
+
+.section-oklab-subtitle {
+  @apply text-lg font-semibold text-toned;
+}
+
+/* Card-style content blocks */
+.oklab-card {
+  @apply bg-elevated rounded-lg shadow-sm border border-default p-6;
+}
+
+/* Footer */
+.footer-oklab {
+  @apply bg-muted border-t border-muted text-sm text-muted py-8;
+}

@@ -23,9 +23,25 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/icon'
   ],
-  //css: ['~/assets/scss/okl.scss'],
-  //css: ['~/assets/scss/main.scss'],
-  css: ['~/assets/css/main.css'],
+  // css: ['~/assets/scss/okl.scss'],
+  // css: ['~/assets/css/main.css'], // works 
+  // -----------------------
+  // gpt recommended ui color mapping
+  css: ['~/aiAssets/css/main.css'], // gpt recommendations
+   ui: {
+    theme: {
+      colors: [
+        'primary',
+        'secondary',
+        'info',
+        'success',
+        'warning',
+        'error',
+        'neutral'
+      ]
+    }
+  },
+  // -----------------------
   sitemap: {
     debug: true,
     //sources: ['/api/__sitemap__/urls'],
