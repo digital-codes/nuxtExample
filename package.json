@@ -50,6 +50,9 @@
     "v-calendar": "^3.1.2",
     "vue-cal": "^5.0.1-rc.33"
   },
+  "overrides": {
+    "fast-xml-parser": "^5.5.9"
+  },
   "devDependencies": {
     "@iconify-json/fa6-brands": "^1.2.6",
     "@iconify-json/fa6-regular": "^1.2.4",
