@@ -72,6 +72,7 @@ export default defineNuxtConfig({
     langDir: 'locales/'
   },
   content: {
+	      experimental: { sqliteConnector: 'native' },
     build: {
       markdown: {
         mdc: true, // Enables Vue components inside markdown files
