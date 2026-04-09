@@ -29,6 +29,7 @@ export default defineNuxtConfig({
   // gpt recommended ui color mapping
   css: ['~/aiAssets/css/main.css'], // gpt recommendations
    ui: {
+    fonts: false,
     theme: {
       colors: [
         'primary',
