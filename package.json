@@ -44,7 +44,7 @@
     "nuxt-echarts": "^1.0.1",
     "pinia": "^3.0.4",
     "sass": "^1.98.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.0",
     "tailwindcss": "^4.2.2",
     "v-calendar": "^3.1.2",
     "vue-cal": "^5.0.1-rc.33"
