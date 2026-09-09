@@ -25,7 +25,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@nuxt/content": "^3.12.0",
     "@nuxt/icon": "^2.2.1",
-    "@nuxt/image": "^1.11.0",
+    "@nuxt/image": "^2.1.0",
     "@nuxt/ui": "^4.8.1",
     "@nuxtjs/color-mode": "^3.5.2",
     "@nuxtjs/device": "^3.2.4",
@@ -44,7 +44,7 @@
     "nuxt-echarts": "^1.0.1",
     "pinia": "^3.0.4",
     "sass": "^1.98.0",
-    "sharp": "^0.35.0",
+    "sharp": "^0.35.4",
     "tailwindcss": "^4.2.2",
     "v-calendar": "^3.1.2",
     "vue-cal": "^5.0.1-rc.33"
